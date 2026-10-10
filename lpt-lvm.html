@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lagar — Psykkonsult</title>
+<meta name="description" content="Tvångsvård: kriterier och paragrafer för LPT (psykiatrisk tvångsvård) och LRV (rättspsykiatrisk vård).">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+</head>
+<body>
+<header class="site-header">
+  <div class="inner">
+    <a class="brand" href="index.html"><span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><g transform="rotate(-45 12 12)"><rect x="3" y="8.5" width="18" height="7" rx="3.5"/><line x1="12" y1="8.5" x2="12" y2="15.5"/></g></svg></span><span class="brand-text">Psykkonsult<span class="brand-tag">Stöd för psykiatrisk jour och konsultation</span></span></a>
+    <nav class="site-nav">
+      <a href="verktyg.html">Verktyg</a>
+      <a href="lpt-lvm.html" class="active">Lagar</a>
+      <a href="psykofarmaka.html" class="nav-akut">Akut psykofarmaka</a>
+      <a href="specialist-psykofarmaka.html">Specialist psykofarmaka</a>
+      <a href="beroende.html">Beroende</a>
+      <a href="internmedicin.html">Internmedicin</a>
+      <a href="kardiologi.html">Kardiologi</a>
+      <a href="infektion.html">Infektion</a>
+      <a href="neurologi.html">Neurologi</a>
+      <a href="toxidrom.html">Toxidrom</a>
+      <a href="issb.html">ISSB</a>
+      <a href="akutmedicin.html" class="nav-akut">Akut livshotande tillstånd</a>
+      <a href="lankar.html">Länkar</a>
+      <a href="om.html">Om</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <h1 class="page-title">Lagar</h1>
+  <p class="page-sub">Tvångsvård och relevant lagstiftning för psykiatrin.</p>
+
+  <div class="card-grid">
+    <a class="card" href="#lpt-lrv"><h3>LPT &amp; LRV</h3><p>Kriterier, paragrafer, vårdform.</p></a>
+    <a class="card" href="#handrackning"><h3>Polishandräckning</h3><p>Vem begär, vem utför.</p></a>
+    <a class="card" href="#nod"><h3>Nödrätt &amp; nödvärn</h3><p>Tvång utan LPT.</p></a>
+    <a class="card" href="#patientlagen"><h3>Patientlagen</h3><p>Beslutsoförmögen patient.</p></a>
+  </div>
+
+  <!-- LPT & LRV -->
+  <h2 class="section-title" id="lpt-lrv">LPT &amp; LRV</h2>
+  <p style="margin:0.2rem 0 0;font-size:0.9rem;">Lagtext: <a href="https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/lag-19911128-om-psykiatrisk-tvangsvard_sfs-1991-1128/" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;">LPT (SFS 1991:1128) ↗</a> · <a href="https://www.riksdagen.se/sv/sok/?avd=dokument&amp;sok=LRV" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;">LRV (1991:1129) ↗</a></p>
+
+  <div class="btn-row">
+    <a class="btn" href="vardintyg.html">Vårdintygs-assistent (LPT) →</a>
+    <a class="btn secondary" href="vardintyg-lpt.pdf" target="_blank" rel="noopener">↓ Vårdintyg (PDF)</a>
+    <a class="btn secondary" href="vardintyg-konvertering.pdf" target="_blank" rel="noopener">↓ Konvertering (PDF)</a>
+    <a class="btn secondary" href="vardintyg-lrv.pdf" target="_blank" rel="noopener">↓ LRV-vårdintyg (PDF)</a>
+  </div>
+
+  <div class="table-wrap">
+    <table class="compact hand">
+      <thead><tr><th>Situation</th><th>§</th><th>Detaljer / kriterier</th><th>Behörighet</th></tr></thead>
+      <tbody>
+        <tr><td><b>Vårdintyg</b></td><td>§4 LPT · 5§ LRV</td><td>Utfärdas efter personlig läkarundersökning.</td><td>Leg. läkare</td></tr>
+        <tr><td rowspan="2"><b>Kvarhållning</b></td><td>§6 LPT</td><td>Patienten får hållas kvar i väntan på intagningsbeslut.</td><td>Läkare<span class="reqg">*</span></td></tr>
+        <tr><td>§6 a LPT</td><td>Nödvändig behandling under kvarhållningen — får omfatta <b>fastspänning (§19) och avskiljning (§20)</b> <small style="color:var(--muted);">(se max-tider under Tvångsåtgärd nedan)</small>, och <b>medicinering (ej depå)</b>.</td><td>Leg. läkare</td></tr>
+        <tr><td><b>Intagningsbeslut</b></td><td>§5 / 6 b LPT</td><td>Får inte utföras av samma läkare som skrev vårdintyget. Vårdintyg giltigt <b>max 4 dagar</b>. Beslut inom <b>24 timmar</b> efter ankomst.</td><td>Specialist<span class="req">*</span></td></tr>
+        <tr><td rowspan="2"><b>Konvertering</b></td><td>§11 LPT</td><td>Frivillig vård (HSL) → <b>vårdintyg</b> → sluten LPT (<b>intagningsbeslut</b>). Kräver §3-kriterierna och att patienten kan befaras allvarligt skada sig själv eller annan; beslut inom <b>24 tim</b>.</td><td>Leg. läkare<span class="reqg">*</span> → Specialist<span class="req">*</span></td></tr>
+        <tr><td>§5 LRV</td><td><b>HSL → §5 LRV · LPT → §5 LRV.</b> Inget vårdintyg krävs — endast beslut. Gäller anhållen/häktad/intagen.</td><td>Specialist<span class="req">*</span></td></tr>
+        <tr><td rowspan="2"><b>Återintagning</b><br><small style="font-weight:400;color:var(--muted);">öppen → sluten</small></td><td>26 a § LPT</td><td>Från öppen psykiatrisk tvångsvård (ÖPT) till sluten, om §3-kriterierna åter uppfylls.</td><td>Specialist<span class="req">*</span></td></tr>
+        <tr><td>LRV ÖV ± SUP</td><td>Från öppen rättspsykiatrisk vård till sluten. Vid SUP gäller särskilda regler (förvaltningsrätten).</td><td>Specialist<span class="req">*</span></td></tr>
+        <tr><td rowspan="4"><b>Tvångsåtgärd</b><br><small style="font-weight:400;color:var(--muted);">efter intagning</small></td><td>§17 LPT</td><td><b>Medicinering</b> mot patientens vilja.</td><td>Specialist<span class="req">*</span></td></tr>
+        <tr><td>§19 LPT</td><td><b>Fastspänning (bälte)</b> vid omedelbar fara att allvarligt skada sig själv eller annan. <b>Max 4 tim</b> (<b>&lt;18 år: 1 tim</b>); längre vid särskilda skäl, IVO underrättas.</td><td>Specialist<span class="req">*</span></td></tr>
+        <tr><td>§20 LPT</td><td><b>Avskiljning</b> vid aggressivt/störande beteende som allvarligt försvårar vården av andra. <b>Max 8 tim</b> (<b>&lt;18 år: 2 tim</b>).</td><td>Specialist<span class="req">*</span></td></tr>
+        <tr><td>§20 a LPT</td><td><b>Inskränkning av kommunikation</b> (elektroniska tjänster). <b>Max 2 mån</b> (vuxen), <b>1 vecka</b> (&lt;18 år).</td><td>Specialist<span class="req">*</span></td></tr>
+        <tr><td colspan="4" style="background:var(--surface);"><b>Visitation</b></td></tr>
+        <tr><td rowspan="2">Innan intagning<br><small style="color:var(--muted);">oavsett vårdform (även HSL)<sup>†</sup></small></td><td>§23 LPT</td><td><b>Kroppsvisitation</b> — kläder, väskor och medhavda föremål (ej kroppen).</td><td>Inskrivande läkare<span class="reqg">*</span></td></tr>
+        <tr><td>§23 LPT</td><td><b>Ytlig kroppsbesiktning</b> — kroppens yttre, okulärt/ingående (även armhålor, hår, fotsulor); ej kroppshåligheter.</td><td>Specialist<span class="req">*</span></td></tr>
+        <tr><td rowspan="2">Efter intagning</td><td>§23 LPT</td><td><b>Kroppsvisitation</b></td><td>Specialist<span class="req">*</span></td></tr>
+        <tr><td>§23 LPT</td><td><b>Ytlig kroppsbesiktning</b></td><td>Specialist<span class="req">*</span></td></tr>
+        <tr><td>Beroendecentrum</td><td><a href="https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/lag-198512-om-kontroll-av-berusningsmedel-pa_sfs-1985-12/" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;">Lag (1985:12) ↗</a></td><td>Beroendeavdelning kan kräva <b>kroppsvisitation och ytlig kroppsbesiktning</b> som villkor för inläggning.</td><td>Kräver ej läkarbeslut</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="legend"><span class="reqg">*</span> leg. läkare i allmän tjänst eller med avtal. <span class="req">*</span> chefsöverläkare eller specialistläkare med uppdrag från chefsöverläkare.</p>
+  <div class="note">IVO underrättas om barn (&lt;18 år) utsatts för fastspänning, avskiljning eller inskränkning av kommunikation vid <b>≥3 tillfällen</b> under vårdperioden (22 c §).</div>
+  <div class="note"><b>†</b> Gäller på enhet där tvångsvård bedrivs. Källa: lokal rutin, VO Vuxenpsykiatri Malmö-Trelleborg — otillåtna föremål (§21) omhändertas utan läkarbeslut. <a href="otillatna-foremal-rutin.pdf" download style="color:var(--accent);text-decoration:none;">↓ Ladda ner rutin (PDF)</a></div>
+
+  <p class="sub-label">Vårdform och tillhörighet</p>
+  <div class="table-wrap">
+    <table class="vgr">
+      <thead>
+        <tr>
+          <th class="lbl">Kategori</th><th class="sub"></th>
+          <th>Allmänpsyk.<br>öppen vård</th><th>Allmänpsyk.<br>sluten vård</th>
+          <th class="div">Rättspsyk.<br>öppen vård</th><th>Rättspsyk.<br>sluten vård</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="lbl" colspan="2">Allmän befolkning</td><td class="lpt"><span class="hsl">HSL</span>, LPT</td><td class="lpt"><span class="hsl">HSL</span>, LPT</td><td class="div"></td><td></td></tr>
+        <tr><td class="lbl" rowspan="4">Misstänkta / åtalade för brott</td><td class="sub">Gripna</td><td></td><td class="lpt"><span class="hsl">HSL</span>, LPT</td><td class="div"></td><td></td></tr>
+        <tr><td class="sub">Anhållna</td><td></td><td></td><td class="div"></td><td class="lrv"><span class="hsl">HSL</span>, LRV</td></tr>
+        <tr><td class="sub">Häktade</td><td></td><td></td><td class="div"></td><td class="lrv"><span class="hsl">HSL</span>, LRV</td></tr>
+        <tr><td class="sub">Intagna för RPU</td><td></td><td></td><td class="div"></td><td class="lrv"><span class="hsl">HSL</span>, LRV</td></tr>
+        <tr><td class="lbl" colspan="2">Sluten ungdomsvård</td><td></td><td></td><td class="div"></td><td class="lrv"><span class="hsl">HSL</span>, LRV</td></tr>
+        <tr><td class="lbl" rowspan="2">Dömda för brott</td><td class="sub">Fängelsedömda</td><td></td><td></td><td class="div"></td><td class="lrv"><span class="hsl">HSL</span>, LRV</td></tr>
+        <tr><td class="sub">Dömda till vård</td><td></td><td></td><td class="div lrv">LRV ± SUP</td><td class="lrv">LRV ± SUP</td></tr>
+        <tr><td class="lbl" colspan="2">Förvarstagna för utvisning/avvisning</td><td></td><td class="lpt"><span class="hsl">HSL</span>, LPT</td><td class="div"></td><td></td></tr>
+        <tr><td class="lbl" colspan="2">Under villkorlig frigivning</td><td class="lpt"><span class="hsl">HSL</span>, LPT</td><td class="lpt"><span class="hsl">HSL</span>, LPT</td><td class="div"></td><td></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="sub-label">Konvertering mellan vårdform</p>
+  <div class="table-wrap">
+    <table class="vgr">
+      <thead>
+        <tr>
+          <th rowspan="2" class="lbl">Kategori</th><th rowspan="2" class="sub"></th>
+          <th colspan="2">Inläggning</th>
+          <th colspan="4" class="div">Konvertering under pågående vård</th>
+        </tr>
+        <tr>
+          <th>LPT</th><th>LRV</th>
+          <th class="div">HSL→LPT</th><th>HSL→LRV</th><th>LPT→LRV</th><th>LRV→LPT</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="lbl" colspan="2">Allmän befolkning</td>
+          <td class="lpt">4§LPT<span class="req">*</span><small>Ansökan FR ≤28 d</small></td><td></td>
+          <td class="div lpt">11§LPT<span class="req">*</span><small>Ansökan FR ≤4 d</small></td><td></td><td></td>
+          <td class="lpt">14§LPT<span class="req">*</span><small>Ansökan FR ≤4 d</small></td>
+        </tr>
+        <tr>
+          <td class="lbl" rowspan="3">Misstänkta / åtalade för brott</td><td class="sub">Gripna</td>
+          <td class="lpt">4§LPT<span class="req">*</span></td><td></td><td class="div"></td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td class="sub">Anhållna</td>
+          <td></td><td class="lrv">5§LRV<span class="req">*</span></td><td class="div"></td><td class="lrv">5§LRV</td><td class="lrv">5§LRV</td><td></td>
+        </tr>
+        <tr>
+          <td class="sub">Häktade</td>
+          <td></td><td class="lrv">5§LRV<span class="req">*</span></td><td class="div"></td><td class="lrv">5§LRV</td><td class="lrv">5§LRV</td><td></td>
+        </tr>
+        <tr>
+          <td class="lbl" colspan="2">Sluten ungdomsvård</td>
+          <td></td><td class="lrv">5§LRV<span class="req">*</span></td><td class="div"></td><td class="lrv">5§LRV</td><td></td><td></td>
+        </tr>
+        <tr>
+          <td class="lbl" rowspan="2">Dömda för brott</td><td class="sub">Fängelsedömda</td>
+          <td></td><td class="lrv">5§LRV<span class="req">*</span></td><td class="div"></td><td class="lrv">5§LRV</td><td></td><td></td>
+        </tr>
+        <tr>
+          <td class="sub">Dömda till vård</td>
+          <td></td><td></td><td class="div"></td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td class="lbl" colspan="2">Förvarstagna för utvisning/avvisning</td>
+          <td></td><td></td>
+          <td class="div lpt">11§LPT<span class="req">*</span><small>Ansökan FR ≤4 d</small></td><td></td><td></td>
+          <td class="lpt">14§LPT<span class="req">*</span><small>Ansökan FR ≤4 d</small></td>
+        </tr>
+        <tr>
+          <td class="lbl" colspan="2">Under villkorlig frigivning</td>
+          <td class="lpt">4§LPT<span class="req">*</span><small>Ansökan FR ≤28 d</small></td><td></td>
+          <td class="div lpt">11§LPT<span class="req">*</span><small>Ansökan FR ≤4 d</small></td><td></td><td></td><td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="legend">
+    FR = förvaltningsrätten · <span class="hsl">HSL</span> = hälso- och sjukvårdslagen · <span style="color:var(--accent-strong);font-weight:600;">LPT</span> = lag om psykiatrisk tvångsvård ·
+    <span style="color:#b56a00;font-weight:600;">LRV</span> = lag om rättspsykiatrisk vård · RPU = rättspsykiatrisk undersökning · SUP = särskild utskrivningsprövning ·
+    <span class="req">*</span> = vårdintyg krävs. Källa: Sahlgrenska Universitetssjukhuset, VGR6354.
+  </p>
+
+
+  <h2 class="section-title" id="handrackning">Polishandräckning</h2>
+  <div class="btn-row" style="margin:0.4rem 0 0.2rem;">
+    <a class="btn" href="polis-handrackning-blankett.pdf" target="_blank" rel="noopener">↓ Polismyndighetens blankett (PDF)</a>
+  </div>
+  <div class="table-wrap">
+    <table class="compact hand">
+      <thead><tr><th>Situation</th><th>Behörighet</th><th>Utför</th></tr></thead>
+      <tbody>
+        <tr><td>Transport <b>innan vårdintyg</b> — undersökning för vårdintyg (47 § 2 st p1)</td><td>Läkare<span class="reqg">*</span><br><small style="color:var(--muted);font-weight:400;">polis kan även agera på eget initiativ utan läkares begäran</small></td><td>Polis</td></tr>
+        <tr><td>Transport <b>efter utfärdat vårdintyg, ≤ 4 dagar</b> (47 § 2 st p2)</td><td>Läkare<span class="reqg">*</span></td><td>Polis</td></tr>
+        <tr><td><b>Återföra patient</b> som lämnat / t.ex. ej återvänt efter permission (47 § 2 st p3–4)</td><td>Specialist<span class="req">*</span></td><td>Polis</td></tr>
+        <tr><td>Rättspsykiatrisk vård — patient inställer sig ej (27 § LRV)</td><td>Specialist<span class="req">*</span></td><td>Polis</td></tr>
+        <tr><td>Övrig transport av redan intagen LPT-patient (47 § 2 st p6)</td><td>Specialist<span class="req">*</span></td><td>Kriminalvården (NTE)</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="legend"><span class="reqg">*</span> leg. läkare i allmän tjänst eller med avtal. <span class="req">*</span> chefsöverläkare eller specialistläkare med uppdrag från chefsöverläkare.</p>
+
+  <h2 class="section-title" id="nod">Nödrätt &amp; nödvärn</h2>
+  <p style="margin:0.2rem 0 0.6rem;font-size:0.9rem;"><a href="https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/brottsbalk-1962700_sfs-1962-700/" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;">Lagtext: Brottsbalken 24 kap. (Riksdagen) ↗</a></p>
+
+  <div class="table-wrap">
+    <table class="compact">
+      <tbody>
+        <tr><td>Nödrätt<br><small style="color:var(--muted);font-weight:400;">BrB 24 kap. 4 §</small></td><td>Någon försöker skada sig själv, andra eller egendom. Behöver <b>ej</b> vara en brottslig gärning.</td></tr>
+        <tr><td>Nödvärn<br><small style="color:var(--muted);font-weight:400;">BrB 24 kap. 1 §</small></td><td>Någon försöker skada annan person eller egendom genom ett <b>brottsligt angrepp</b>.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="sub-label" style="font-size:0.85rem;color:var(--muted);">Begränsningar</p>
+  <ul style="margin:0.2rem 0 0;padding-left:1.2rem;color:var(--muted);font-size:0.9rem;">
+    <li>Inte mer våld än nöden kräver.</li>
+    <li>Får vid behov bälteslägga eller avskilja patienten.</li>
+    <li>Endast för att avvärja en akut situation — för längre tvång krävs LPT.</li>
+  </ul>
+  <div class="note danger"><b>Får inte ge läkemedel mot patientens vilja</b> under nöd/nödvärn — åtgärden måste kunna upphöra omedelbart (vilket en läkemedelseffekt inte kan).</div>
+
+  <h2 class="section-title" id="patientlagen">Patientlagen</h2>
+  <p style="margin:0.2rem 0 0.6rem;font-size:0.9rem;"><a href="https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/patientlag-2014821_sfs-2014-821/" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;">Lagtext: Patientlag 2014:821 (Riksdagen) ↗</a></p>
+
+  <ul style="margin:0.2rem 0 0;padding-left:1.2rem;color:var(--muted);font-size:0.9rem;">
+    <li>Patientlagen bygger på <b>samtycke</b> (4 kap. 2 §). Har patienten beslutsförmåga och tackar nej → respektera autonomin.</li>
+    <li><b>Akut undantag (presumerat samtycke):</b> vård som behövs för att avvärja fara som akut och allvarligt hotar liv/hälsa får ges när patientens vilja inte kan utredas (t.ex. medvetslöshet). Stöd i <b>patientlagen 4 kap. 4 §</b>.</li>
+    <li><b>Beslutsoförmögen vuxen:</b> Sverige saknar lag om ställföreträdande beslut för vuxna i somatisk vård.</li>
+  </ul>
+  <div class="note danger"><b>LPT är inte ett verktyg för nödvändig somatisk behandling i sig.</b> Det krävs att en allvarlig psykisk störning finns och orsakas eller förvärras av det somatiska tillståndet för att somatisk tvångsbehandling ska kunna ges.</div>
+
+  <div class="btn-row" style="margin-top:2rem;">
+    <a class="btn secondary" href="beroende.html#lvm">LVM (vård av missbrukare) → Beroende</a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  psykkonsult.se · <a href="index.html">Hem</a> · <a href="om.html">Om</a>
+</footer>
+</body>
+</html>

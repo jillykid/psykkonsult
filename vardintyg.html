@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Vårdintygs-assistent — Psykkonsult</title>
+<meta name="description" content="Stöd för att skriva vårdintyg för psykiatrisk tvångsvård enligt LPT.">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<style>
+  .vi-tool { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-top: 0.6rem; }
+  .vi-bar { background: var(--accent); color: #fff; padding: 0.85rem 1.1rem; font-weight: 700; font-size: 1.1rem; }
+  .vi-body { padding: 1.1rem; }
+  .vi-body > p { margin: 0 0 0.8rem; }
+  .vi-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.7rem; margin: 0.8rem 0; }
+  .vi-scenario {
+    text-align: left; padding: 0.85rem 1rem; border: 1px solid var(--border); border-radius: 9px;
+    background: var(--accent-soft); color: var(--accent-strong); font-size: 0.95rem; font-weight: 600;
+    cursor: pointer; font-family: inherit;
+  }
+  .vi-scenario:hover { border-color: var(--accent); background: #d8e9f0; }
+  .vi-field { margin: 1.4rem 0; }
+  .vi-field h3, .vi-field h4 { margin: 0 0 0.2rem; display: flex; align-items: center; justify-content: space-between; gap: 0.6rem; }
+  .vi-field h3 { font-size: 1.02rem; }
+  .vi-field h4 { font-size: 0.95rem; }
+  .vi-guide-btn {
+    flex: none; font-size: 0.72rem; font-weight: 600; padding: 0.25rem 0.55rem; border-radius: 6px;
+    border: 1px solid var(--border); background: var(--surface); color: var(--accent-strong); cursor: pointer; font-family: inherit;
+  }
+  .vi-guide-btn:hover { background: var(--accent-soft); border-color: var(--accent); }
+  .vi-guide { background: var(--accent-soft); border: 1px solid #cfe3ea; border-radius: 8px; padding: 0.6rem 0.85rem; margin: 0.5rem 0; font-size: 0.86rem; }
+  .vi-guide h5 { margin: 0 0 0.3rem; font-size: 0.85rem; }
+  .vi-guide ul { margin: 0; padding-left: 1.1rem; color: var(--muted); }
+  .vi-guide ul ul { margin-top: 0.2rem; }
+  textarea.vi-ta {
+    width: 100%; box-sizing: border-box; padding: 0.7rem 0.8rem; border: 1px solid var(--border); border-radius: 8px;
+    font-family: inherit; font-size: 0.92rem; line-height: 1.5; color: var(--text); resize: vertical; background: #fff;
+  }
+  textarea.vi-ta:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+  .vi-ta.h32 { min-height: 150px; } .vi-ta.h24 { min-height: 100px; }
+  .vi-meta { display: flex; justify-content: space-between; gap: 1rem; margin-top: 0.4rem; flex-wrap: wrap; }
+  .vi-tips { font-size: 0.82rem; color: var(--muted); margin: 0; }
+  .vi-spell { font-size: 0.74rem; color: #178a4c; display: flex; align-items: center; gap: 0.3rem; white-space: nowrap; }
+  .vi-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.6rem; }
+  .vi-chip {
+    font-size: 0.76rem; padding: 0.3rem 0.55rem; border-radius: 6px; border: 1px solid var(--border);
+    background: var(--surface); color: var(--text); cursor: pointer; font-family: inherit;
+  }
+  .vi-chip:hover { background: var(--accent-soft); border-color: var(--accent); color: var(--accent-strong); }
+  .vi-sub { border: 1px solid var(--border); border-radius: var(--radius); padding: 0.9rem 1rem; margin: 0.7rem 0; background: var(--surface); }
+  .vi-radio { border: 1px solid var(--border); border-radius: 8px; padding: 0.8rem 1rem; background: var(--surface); display: grid; gap: 0.6rem; }
+  .vi-radio label { display: flex; gap: 0.55rem; align-items: flex-start; font-size: 0.92rem; cursor: pointer; }
+  .vi-radio input { margin-top: 0.2rem; flex: none; }
+  .vi-actions { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.6rem; padding-top: 1.1rem; border-top: 1px solid var(--border); }
+  .vi-legal h3 { font-size: 1.02rem; margin: 1.2rem 0 0.4rem; }
+  .vi-legal ul, .vi-legal ol { margin: 0.3rem 0; padding-left: 1.2rem; }
+  .vi-legal li { margin: 0.2rem 0; }
+  .vi-callout { background: #fdf8e9; border: 1px solid #ecdca6; border-radius: 8px; padding: 0.8rem 1rem; margin: 0.6rem 0 1rem; }
+  @media (max-width: 600px) { .vi-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="inner">
+    <a class="brand" href="index.html"><span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><g transform="rotate(-45 12 12)"><rect x="3" y="8.5" width="18" height="7" rx="3.5"/><line x1="12" y1="8.5" x2="12" y2="15.5"/></g></svg></span><span class="brand-text">Psykkonsult<span class="brand-tag">Stöd för psykiatrisk jour och konsultation</span></span></a>
+    <nav class="site-nav">
+      <a href="verktyg.html" class="active">Verktyg</a>
+      <a href="lpt-lvm.html">Lagar</a>
+      <a href="psykofarmaka.html" class="nav-akut">Akut psykofarmaka</a>
+      <a href="specialist-psykofarmaka.html">Specialist psykofarmaka</a>
+      <a href="beroende.html">Beroende</a>
+      <a href="internmedicin.html">Internmedicin</a>
+      <a href="kardiologi.html">Kardiologi</a>
+      <a href="infektion.html">Infektion</a>
+      <a href="neurologi.html">Neurologi</a>
+      <a href="toxidrom.html">Toxidrom</a>
+      <a href="issb.html">ISSB</a>
+      <a href="akutmedicin.html" class="nav-akut">Akut livshotande tillstånd</a>
+      <a href="lankar.html">Länkar</a>
+      <a href="om.html">Om</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <p class="page-sub" style="margin-bottom:0.6rem;"><a href="verktyg.html" style="color:var(--accent);text-decoration:none;">← Verktyg</a></p>
+  <div class="vi-tool">
+    <div class="vi-bar" id="vi-title">Vårdintygs-assistent</div>
+    <div class="vi-body" id="vi-app"></div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  psykkonsult.se · <a href="index.html">Hem</a> · <a href="om.html">Om</a>
+</footer>
+
+<script>
+"use strict";
+
+/* ---------- Data ---------- */
+const templates = {
+  blank:   { observations:"", disorder:"", careNeeds:"", patientInfo:"", otherPersonInfo:"", journalInfo:"", otherDocsInfo:"" },
+  psychosis: {
+    observations:`Vid undersökningen uppvisar patienten ett desorganiserat beteende med bristande ögonkontakt. Patienten beskriver hörselhallucinationer i form av röster som kommenterar hens beteende och ger kommandon. Tydliga vanföreställningar av förföljelsekaraktär framkommer där patienten är övertygad om att hen är övervakad. Tankeprocessen är osammanhängande med tankestopp. Insikten i det egna tillståndet är gravt nedsatt.
+
+Somatiskt status: Vitala parametrar inom normalvärden. Huden torr, tecken på bristande vätskeintag senaste dygnen.`,
+    disorder:`Patienten lider av en allvarlig psykisk störning i form av ett psykotiskt syndrom. Detta manifesteras genom tydliga realitetsstörningar i form av vanföreställningar, hallucinationer samt ett desorganiserat beteende. Det psykotiska tillståndet är av sådan allvarlighetsgrad att det väsentligt påverkar patientens förmåga till realitetstestning och omdöme.`,
+    careNeeds:`Patienten har ett oundgängligt behov av psykiatrisk heldygnsvård på grund av den allvarliga psykiska störningen. Patienten saknar sjukdomsinsikt och kan därför inte tillgodogöra sig vård i öppna former. Utan omedelbar vård finns stor risk för att patientens tillstånd allvarligt försämras. Den psykotiska symptomatologin medför en betydande risk för att patienten kan komma att skada sig själv eller andra.
+
+Det föreligger för närvarande inga alternativ till sluten psykiatrisk tvångsvård. Patientens sociala situation och nätverk kan för närvarande inte erbjuda tillräckligt stöd för att kompensera för vårdbehovet.`,
+    patientInfo:`Patienten uppger att hen känner sig förföljd av personer som placerat ut övervakningsutrustning i hemmet. Menar att "de" kan styra tankarna genom radiovågor och att "de" ger kommandon genom TV-apparaten.`,
+    otherPersonInfo:`Enligt make/maka har patienten successivt försämrats under de senaste två veckorna. Har inte sovit, ätit oregelbundet och börjat täcka för fönstren i hemmet med aluminiumfolie. Har uttryckt oro över att "vara övervakad" och blivit alltmer isolerad.`,
+    journalInfo:`Enligt journalanteckningar från öppenvårdsmottagningen har patienten tidigare vårdats inneliggande vid två tillfällen för liknande psykotiska skov. Senaste besöket på mottagningen var för tre månader sedan, då patienten uppgavs må relativt väl men hade börjat hoppa över medicindoser.`,
+    otherDocsInfo:`Enligt LPT-vårdintyg från 2022 uppvisade patienten då liknande symtombild med paranoia och hörselhallucinationer.`
+  },
+  mania: {
+    observations:`Vid undersökningen uppvisar patienten en påtagligt förhöjd, expansiv och irritabel sinnesstämning. Verbalt flöde med tankeflykt och idéflykt noteras. Patienten är överaktiv, rastlös och har befunnit sig i ett sådant tillstånd under de senaste 4 dygnen. Tydligt förhöjd självkänsla med grandiositet framkommer. Sömnbehovet är kraftigt minskat och patienten uppger att hen inte har sovit mer än 2 timmar per natt senaste veckan. Bristande insikt i sitt tillstånd och omdömeslöshet i form av ekonomiskt riskfyllt beteende (stora inköp, tagit lån).
+
+Somatiskt status: Förhöjd puls (110), blodtryck 145/95. Tecken på uttorkning och viktnedgång.`,
+    disorder:`Patienten lider av en allvarlig psykisk störning i form av ett maniskt tillstånd inom ramen för en bipolär sjukdom. Tillståndet kännetecknas av affektiv förhöjning, psykomotorisk acceleration, kraftig sömnreduktion och bristande omdöme. Den maniska symptomatologin är av sådan allvarlighetsgrad att den allvarligt påverkar patientens förmåga att ta hand om sig själv och fatta välavvägda beslut.`,
+    careNeeds:`Patienten har ett oundgängligt behov av psykiatrisk heldygnsvård på grund av den allvarliga psykiska störningen i form av mani. Patienten saknar insikt i sitt tillstånd och avböjer frivillig vård. Utan omedelbar vård finns stor risk för fortsatt försämring med allvarliga konsekvenser för patientens hälsa, både somatiskt och psykiskt.
+
+Patienten har uppvisat ett riskfyllt beteende i form av ekonomiskt skadliga handlingar som utgör en fara för hens ekonomi, sociala relationer och position. Den somatiska hälsan är hotad genom bristande sömn, nutrition och vätskeintag. Det är inte möjligt att tillgodose patientens vårdbehov i öppna vårdformer.`,
+    patientInfo:`Patienten uppger att hen "aldrig mått bättre" och att hen äntligen insett sin "sanna potential". Meddelar att hen har investeringsmöjligheter som kommer göra hen förmögen och att sovande är slöseri med tid. Berättar om storslagna planer att starta flera företag samtidigt.`,
+    otherPersonInfo:`Partner uppger att patienten senaste veckan knappt sovit alls, talat oavbrutet och blivit irritabel vid minsta invändning. Har köpt en ny bil och tagit flera snabblån utan att diskutera detta. Förklarar att patienten tagit ut hela familjen på dyra restauranger och köpt presenter för stora summor.`,
+    journalInfo:`Enligt journalanteckningar har patienten diagnosen bipolär sjukdom typ I med tidigare dokumenterade maniska episoder. Har historik av att sluta med litium på eget bevåg. Senaste besöket hos psykiatrin var för två månader sedan då stämningsläget bedömdes stabilt.`,
+    otherDocsInfo:`Från tidigare LPT-vårdintyg framgår att patienten under maniska episoder tenderar att få kraftig irritabilitet och dysfori när symptomen eskalerar.`
+  },
+  depression: {
+    observations:`Vid undersökningen uppvisar patienten en kraftigt sänkt grundstämning med psykomotorisk hämning och minskad mimik. Patientens tal är långsamt och innehållsfattigt. Patienten beskriver en total hopplöshetskänsla och uppger konkreta självmordstankar med planer på att hoppa från bron. Hävdar att hen inte ser någon utväg ur sin situation. Har slutat med vardagliga aktiviteter och egenomsorg. Nutritionsstatus försämrat med viktnedgång på 5 kg senaste månaden.
+
+Somatiskt status: Bradykardi 55 slag/min, hypotoni 95/60, tecken på dehydrering och näringsbrist.`,
+    disorder:`Patienten lider av en allvarlig psykisk störning i form av en djup depression med suicidrisk. Tillståndet manifesteras genom uttalad sänkt grundstämning, vital hämning och konkreta självmordstankar med planer. Depressionen är av sådan allvarlighetsgrad att den i betydande omfattning påverkar patientens förmåga att värdera sin situation, ta hand om sig själv och skydda sitt eget liv.`,
+    careNeeds:`Patienten har ett oundgängligt behov av psykiatrisk heldygnsvård på grund av den allvarliga psykiska störningen i kombination med påtaglig suicidrisk. Självmordstankar med konkreta planer och bristande framtidstro utgör en omedelbar fara för patientens liv.
+
+Öppenvårdsinsatser bedöms som otillräckliga då patienten saknar förmåga att tillgodogöra sig dessa i nuvarande tillstånd och tillräcklig säkerhet mot suicidhandling inte kan garanteras. Det sociala nätverket kan inte tillgodose det omedelbara vårdbehov som föreligger, och det saknas andra alternativ som kan tillgodose patientens vårdbehov.`,
+    patientInfo:`Patienten uppger att hen känner sig "helt tom inuti" och att "allt är meningslöst". Säger att hen "bara vill att det ska ta slut" och att hen har tänkt att hoppa från bron. Patienten bekräftar att hen har köpt tabletter och sparat dem för att kunna ta sitt liv.`,
+    otherPersonInfo:`Anhörig beskriver att patienten gradvis försämrats över flera månader och nu är oigenkännlig. Förklarar att patienten isolerat sig alltmer, slutat svara i telefon och inte längre orkar med vardagliga sysslor. Senaste veckan har anhörig varit orolig då patienten gett bort ägodelar och pratat om att "snart vara borta".`,
+    journalInfo:`Enligt journalanteckningar har patienten tidigare haft två depressiva episoder men utan dokumenterad suicidalitet av denna grad. Har provat två olika antidepressiva läkemedel under det senaste halvåret med otillräcklig effekt. Avbokade sitt senaste återbesök till psykiatrimottagningen.`,
+    otherDocsInfo:`Enligt remiss från företagshälsovården har patienten varit sjukskriven i fyra månader på grund av depression.`
+  },
+  substance: {
+    observations:`Vid undersökningen uppvisar patienten ett desorienterat och agiterat beteende. Patienten uppger att hen har använt amfetamin och inte sovit på 4 dygn. Tydliga psykotiska symtom i form av paranoida vanföreställningar och visuella hallucinationer förekommer. Patienten visar aggressivitet och impulsivitet med bristande förmåga att kontrollera sitt beteende. Patientens tillstånd växlar hastigt mellan oro och dämpning.
+
+Somatiskt status: Takykardi 115/min, förhöjt blodtryck 165/95, utvidgade pupiller, tremor i händerna. Torr munslemhinna.`,
+    disorder:`Patienten lider av en allvarlig psykisk störning i form av substansinducerad psykos orsakad av amfetamin. Tillståndet manifesteras genom realitetsstörning med desorganiserat beteende, hallucinationer och paranoida vanföreställningar i kombination med påtaglig affektiv instabilitet och agitation. Tillståndet är av sådan allvarlighetsgrad att det innebär en omedelbar risk för patientens hälsa och säkerhet.`,
+    careNeeds:`Patienten har ett oundgängligt behov av psykiatrisk heldygnsvård på grund av den substansinducerade psykosen. Tillståndet kräver noggrann medicinsk övervakning för att dels hantera den akuta psykotiska symptomatologin, dels säkerställa en medicinskt säker avgiftning.
+
+Patienten uppvisar bristande sjukdomsinsikt och impulskontroll, vilket innebär att vård i öppna former inte är tillräcklig. Den akuta förvirringen och psykotiska symptomatologin medför en betydande risk för att patienten kan komma att skada sig själv eller andra. Det sociala nätverket kan för närvarande inte erbjuda tillräckligt stöd, och det saknas andra alternativ som kan tillgodose patientens akuta vårdbehov.`,
+    patientInfo:`Patienten uppger fragmenterat att hen tagit amfetamin kontinuerligt i "flera dagar" men kan inte precisera mängd. Berättar också att hen ser "skuggor och figurer" i rummet och att hen är rädd för att "de" ska skada hen. Kan ej redogöra för hur länge missbruket har pågått.`,
+    otherPersonInfo:`Enligt polisen som förde patienten till sjukhuset har hen påträffats vandrande mitt i trafiken och betett sig hotfullt mot förbipasserande. Vid kroppsvisitation har polisen funnit en mindre mängd vad som misstänks vara amfetamin.`,
+    journalInfo:`Enligt tillgängliga journaluppgifter har patienten tidigare vårdats vid tre tillfällen för substansutlösta psykoser, senast för åtta månader sedan. Har diagnostiserad blandmissbruksproblematik, främst amfetamin och cannabis. Har avbrutit planerad beroendevård vid upprepade tillfällen.`,
+    otherDocsInfo:`Enligt remissvar från Beroendecentrum föreligger samsjuklighet med ADHD, vilket komplicerar missbruksbehandlingen.`
+  }
+};
+
+const conditionLabels = {
+  blank:"Tom mall", psychosis:"Psykotiskt tillstånd", mania:"Maniskt skov",
+  depression:"Svår depression med suicidrisk", substance:"Substansinducerad psykos"
+};
+
+const GUIDE = {
+  observations:{ title:"Vägledning: Iakttagelser vid undersökningen", items:[
+    "Beskriv det du faktiskt observerar under undersökningen",
+    "Dokumentera psykiatriska symtom (hallucinationer, vanföreställningar, suicidtankar)",
+    "Notera patientens sjukdomsinsikt och omdöme","Inkludera relevanta somatiska fynd",
+    "Använd direkta citat från patienten när det är relevant","Var specifik och undvik vaga formuleringar"]},
+  disorder:{ title:"Vägledning: Bedömning av allvarlig psykisk störning", items:[
+    'Ange tydligt att patienten lider av en "allvarlig psykisk störning" (juridiskt krav)',
+    "Specificera störningens art (typ) och grad (svårighetsgrad)",
+    "Förklara hur symtomen utgör en allvarlig psykisk störning",
+    "Beskriv hur störningen påverkar patientens funktionsförmåga"]},
+  careNeeds:{ title:"Vägledning: Bedömning av vårdbehov", items:[
+    'Ange tydligt att behovet av psykiatrisk heldygnsvård är "oundgängligt" (juridiskt krav)',
+    "Förklara varför öppenvård är otillräcklig i detta fall",
+    "Beskriv konkreta risker om patienten inte får tvångsvård",
+    "Adressera farlighet för sig själv eller andra om relevant",
+    "Beskriv patientens sociala situation och varför den inte kan kompensera för vårdbehovet"]},
+  patientInfo:{ title:"Vägledning: Uppgifter från patienten", items:[
+    "Dokumentera relevant information som patienten själv uppgett",
+    "Inkludera direkta citat från patienten om särskilt relevanta utsagor",
+    "Notera om patienten lämnat uppgifter om tidigare sjukdomsepisoder",
+    "Dokumentera patientens egen beskrivning av nuvarande situation"]},
+  otherPersonInfo:{ title:"Vägledning: Information från andra personer", items:[
+    "Dokumentera uppgifter från närstående, vårdpersonal eller myndigheter",
+    "Ange vem som lämnat uppgifterna och hens relation till patienten",
+    "Notera observationer av patientens beteende över tid",
+    "Inkludera information om förändringar i patientens livssituation"]},
+  journalInfo:{ title:"Vägledning: Uppgifter från journal", items:[
+    "Inkludera relevant historik från tidigare vårdepisoder",
+    "Dokumentera tidigare psykiatriska diagnoser och behandlingar",
+    "Notera mönster av tidigare tvångsvårdsperioder",
+    "Inkludera information om läkemedelsbehandling och följsamhet"]},
+  otherDocsInfo:{ title:"Vägledning: Uppgifter från andra handlingar", items:[
+    "Dokumentera relevant information från läkarintyg, remisser, etc.",
+    "Inkludera information från andra vårdgivare",
+    "Notera information från tidigare vårdtillfällen vid andra kliniker",
+    "Inkludera information från socialtjänstens utredningar om relevant"]}
+};
+
+const CHIPS = {
+  observations:[
+    ["+ Agiterat beteende"," Patienten uppvisar ett agiterat beteende"],
+    ["+ Hallucinationer"," Hallucinationer i form av röster"],
+    ["+ Paranoia"," Tankeinnehåll präglat av paranoia"],
+    ["+ Bristande insikt"," Bristande sjukdomsinsikt"],
+    ["+ Tankestörningar"," Uppvisar formella tankestörningar med tankestopp och tankeavbrott"],
+    ["+ Depressivt stämningsläge"," Stämningsläget är sänkt med minskad mimik och psykomotorisk hämning"],
+    ["+ Förhöjt stämningsläge"," Stämningsläget är förhöjt med talträngdhet och förhöjd självkänsla"],
+    ["+ Självmordstankar"," Patienten uppger aktiva självmordstankar med planer på att"],
+    ["+ Vanföreställningar"," Vanföreställningar med övertygelse om att"],
+    ["+ Ångestsymtom"," Uppvisar kraftig ångest med autonom överaktivitet i form av takykardi och svettningar"],
+    ["+ Aggressivitet"," Patienten uppträder hotfullt och aggressivt mot personalen"],
+    ["+ Orientering"," Vid undersökningen är patienten orienterad till tid, rum och person"],
+    ["+ Somatiskt status UA"," Somatiskt status: Vitala parametrar inom normalvärden. Pupiller, hjärta, lungor och buk utan anmärkning."]
+  ],
+  disorder:[
+    ["+ Realitetsstörning"," Tillståndet bedöms som en allvarlig psykisk störning då det innebär en uttalad realitetsstörning"],
+    ["+ Svårighetsgrad"," Svårighetsgraden bedöms som hög då patienten saknar sjukdomsinsikt"],
+    ["+ Art och grad"," Tillståndet uppfyller kriterierna för en allvarlig psykisk störning både till art och grad"],
+    ["+ Psykotiska symtom"," Den psykotiska symptomatologin medför en betydande funktionsnedsättning"],
+    ["+ Affektiv störning"," Den affektiva störningen är av sådan allvarlighetsgrad att den väsentligt påverkar patientens omdöme"],
+    ["+ Schizofrenispektrum"," Det kliniska tillståndet bedöms som en allvarlig psykisk störning i form av en psykos inom schizofrenispektrum"],
+    ["+ Djup depression"," Patientens allvarliga psykiska störning bedöms som en djup depression med uttalad suicidrisk"],
+    ["+ Substansinducerad"," Tillståndet utgör en allvarlig psykisk störning i form av en substansinducerad psykos"]
+  ],
+  careNeeds:[
+    ["+ Öppenvård otillräcklig"," Öppenvårdsalternativ har övervägts men bedöms som otillräckliga på grund av"],
+    ["+ Fara för sig själv"," Patienten bedöms utgöra en fara för sig själv genom"],
+    ["+ Socialt nätverk"," Patientens sociala nätverk kan inte tillgodose det omedelbara vårdbehovet"],
+    ["+ Oundgängligt behov"," Patienten har ett oundgängligt behov av psykiatrisk heldygnsvård då tillståndet inte kan behandlas i öppna vårdformer"],
+    ["+ Självmordsrisk"," Patienten uppvisar akut självmordsrisk som kräver konstant övervakning och skydd som endast kan tillgodoses i slutenvård"],
+    ["+ Ensamboende"," Vård i hemmet är inte möjlig då patienten lever ensam utan tillräckligt stöd från anhöriga"],
+    ["+ Risk för andra"," Patientens tillstånd innebär en risk för andra personer i omgivningen på grund av aggressivitet och bristande impulskontroll"],
+    ["+ Oförmåga egenvård"," Patientens psykotiska symtom medför en oförmåga att ta hand om grundläggande behov som nutrition och hygien"],
+    ["+ Tidigare avbruten vård"," Patienten har tidigare avbrutit frivillig behandling vilket lett till allvarlig försämring"],
+    ["+ Initial stabilisering"," För att kunna påbörja adekvat medicinsk behandling krävs initial stabilisering under psykiatrisk heldygnsvård"],
+    ["+ Läkemedelsinsättning"," Den akuta försämringen av patientens tillstånd kräver omedelbar insättning av läkemedel och observation av effekt och biverkningar"]
+  ],
+  patientInfo:[
+    ["+ Hör röster"," Patienten uppger att hen hör röster som kommenterar hens handlingar"],
+    ["+ Livsleda"," Patienten nekar till självmordstankar men uppger att 'livet känns meningslöst'"],
+    ["+ Missbruk"," Patienten erkänner missbruk av substanser men kan inte specificera mängd"],
+    ["+ Utsatt medicin"," Patienten uppger att hen slutat med ordinerad medicinering för ca två veckor sedan"]
+  ],
+  otherPersonInfo:[
+    ["+ Anhörig om psykos"," Enligt make/maka har patienten uppvisat tilltagande tecken på psykos under senaste veckan"],
+    ["+ Hemtjänst"," Hemtjänstpersonal uppger att patienten inte ätit eller tagit sina mediciner på flera dagar"],
+    ["+ Polis"," Polis som larmats till bostaden beskriver patienten som agiterad och hotfull"],
+    ["+ Socialtjänst"," Enligt handläggare på socialtjänsten har patienten avbrutit alla planerade stödinsatser"]
+  ],
+  journalInfo:[
+    ["+ Tidigare LPT"," Enligt journalen har patienten tidigare vårdats enligt LPT vid tre tillfällen under de senaste två åren"],
+    ["+ Diagnos"," Av journalen framgår att patienten har diagnosen schizofreni med återkommande psykosskov"],
+    ["+ Suicidförsök"," Dokumenterad historik av suicidförsök där patienten för ett år sedan intoxikerade sig med läkemedel"],
+    ["+ Följsamhet"," Av journalen framgår bristande följsamhet till ordinerad medicinering"]
+  ],
+  otherDocsInfo:[
+    ["+ Remiss"," Enligt remiss från vårdcentralen har patienten uppvisat ökande psykotiska symtom trots insatt behandling"],
+    ["+ Utskrivning"," Av utskrivningsmeddelande från annan klinik framgår att patienten avvikit från avdelningen i förtid"],
+    ["+ Socialtjänst"," Enligt socialtjänstens utredning framkommer att patienten har en instabil boendesituation"],
+    ["+ Tidigare vårdintyg"," Av tidigare vårdintyg framgår liknande symtombild med bristande verklighetsförankring"]
+  ]
+};
+
+const PLACEHOLDER = {
+  observations:"Beskriv patientens psykiska status, beteende och relevanta somatiska fynd...",
+  disorder:"Beskriv arten och graden av den psykiska störningen...",
+  careNeeds:"Motivera det oundgängliga behovet av psykiatrisk heldygnsvård...",
+  patientInfo:"Dokumentera relevant information som patienten själv uppgett...",
+  otherPersonInfo:"Dokumentera information från närstående, vårdpersonal eller myndigheter...",
+  journalInfo:"Dokumentera relevant information från patientens journal...",
+  otherDocsInfo:"Dokumentera information från andra handlingar som läkarintyg, remisser, etc..."
+};
+const TIPS = {
+  observations:'Tips: Beskriv specifika observerbara beteenden, uttalanden och symtom.',
+  disorder:'Tips: Ange tydligt arten och graden av störningen. Använd formuleringen "allvarlig psykisk störning".',
+  careNeeds:'Tips: Förklara varför heldygnsvård är absolut nödvändig. Använd ordet "oundgängligt".'
+};
+
+/* ---------- State ---------- */
+const state = {
+  activeSection:"intro",
+  condition:"",
+  formData:{ observations:"", disorder:"", careNeeds:"", patientAttitude:"opposes",
+             patientInfo:"", otherPersonInfo:"", journalInfo:"", otherDocsInfo:"" },
+  showGuidance:{ observations:false, disorder:false, careNeeds:false, attitude:false,
+                 patientInfo:false, otherPersonInfo:false, journalInfo:false, otherDocsInfo:false }
+};
+
+/* ---------- Helpers ---------- */
+const corrections = {
+  'halucination':'hallucination','psykiatrisk tvangsvård':'psykiatrisk tvångsvård',
+  'allvarig psykisk störning':'allvarlig psykisk störning','oundgangeligt':'oundgängligt',
+  'schizofreni':'schizofreni','suicid':'suicid','tankestorning':'tankestörning','vanforestallning':'vanföreställning'
+};
+function autocorrect(value){
+  let v = value;
+  Object.keys(corrections).forEach(inc => { v = v.replace(new RegExp(inc,'gi'), corrections[inc]); });
+  return v;
+}
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function guideHTML(field){
+  const g = GUIDE[field]; if(!g || !state.showGuidance[field]) return "";
+  return `<div class="vi-guide"><h5>${esc(g.title)}</h5><ul>${g.items.map(i=>`<li>${esc(i)}</li>`).join("")}</ul></div>`;
+}
+function chipsHTML(field){
+  return `<div class="vi-chips">${CHIPS[field].map((c,i)=>
+    `<button class="vi-chip" data-action="append" data-field="${field}" data-idx="${i}">${esc(c[0])}</button>`).join("")}</div>`;
+}
+function fieldHTML(field, heading, tag, opts){
+  opts = opts || {};
+  const spell = opts.spell ? `<span class="vi-spell">✓ Stavningskontroll aktiv</span>` : "";
+  const tip = opts.tip ? `<p class="vi-tips">${esc(opts.tip)}</p>` : "";
+  return `
+    <${tag} >${esc(heading)}
+      <button class="vi-guide-btn" data-action="toggle" data-field="${field}">ⓘ Vägledning</button>
+    </${tag}>
+    ${guideHTML(field)}
+    <textarea class="vi-ta ${opts.big?'h32':'h24'}" data-field="${field}" placeholder="${esc(PLACEHOLDER[field])}"></textarea>
+    <div class="vi-meta">${tip}${spell}</div>
+    ${chipsHTML(field)}`;
+}
+
+/* ---------- Views ---------- */
+function viewIntro(){
+  return `
+  <p>Detta verktyg hjälper läkarstudenter att öva och assisterar legitimerade läkare och psykiatriker att skriva professionella och korrekta vårdintyg för psykiatrisk tvångsvård enligt LPT.</p>
+  <p>Välj en vanlig klinisk presentation för vägledning:</p>
+  <div class="vi-grid">
+    <button class="vi-scenario" data-action="select" data-condition="blank">Tom mall (skriv fritt)</button>
+    <button class="vi-scenario" data-action="select" data-condition="psychosis">Psykotiskt tillstånd</button>
+    <button class="vi-scenario" data-action="select" data-condition="mania">Maniskt skov</button>
+    <button class="vi-scenario" data-action="select" data-condition="depression">Svår depression med suicidrisk</button>
+    <button class="vi-scenario" data-action="select" data-condition="substance">Substansinducerad psykos</button>
+  </div>
+  <div class="vi-actions" style="margin-top:0.6rem;border:none;padding:0;">
+    <button class="btn secondary" data-action="goto" data-section="legal">Juridiska krav</button>
+    <button class="btn secondary" data-action="goto" data-section="guidelines">Allmän vägledning</button>
+  </div>
+  <div class="vi-callout">
+    <strong>Vanliga fallgropar vid skrivande av vårdintyg:</strong>
+    <ul style="margin:0.4rem 0 0;padding-left:1.2rem;">
+      <li>Otillräcklig dokumentation av observationer – var specifik om beteenden och symtom</li>
+      <li>Bristande koppling mellan observationer och bedömning</li>
+      <li>Att inte adressera alla tre lagliga kriterier för LPT</li>
+      <li>Vaga beskrivningar av risk – specificera konkreta risker</li>
+      <li>Användning av medicinsk jargong utan förklaring för icke-psykiatriker</li>
+    </ul>
+  </div>`;
+}
+
+function viewLegal(){
+  return `
+  <div class="vi-legal">
+    <div class="vi-callout">
+      <strong>De tre kriterier som ALLA måste uppfyllas för LPT (§3 LPT):</strong>
+      <ol style="margin:0.4rem 0 0;padding-left:1.3rem;">
+        <li>Patienten lider av en allvarlig psykisk störning</li>
+        <li>Patienten har ett oundgängligt behov av psykiatrisk heldygnsvård som inte kan tillgodoses på annat sätt</li>
+        <li>Patienten motsätter sig frivillig vård ELLER det finns grundad anledning att anta att vården inte kan ges med patientens samtycke</li>
+      </ol>
+    </div>
+    <h3>Vad utgör en "allvarlig psykisk störning"?</h3>
+    <ul>
+      <li>Psykotiska tillstånd med störd realitetsuppfattning</li>
+      <li>Svår depression med suicidrisk</li>
+      <li>Svåra personlighetsstörningar med psykosnära drag</li>
+      <li>Substansinducerade psykotiska tillstånd under intoxikation eller abstinens</li>
+      <li>Svår anorexia nervosa med risk för vitala funktioner</li>
+      <li>Svår psykiatrisk kris som påverkar funktionen till psykotisk grad</li>
+    </ul>
+    <h3>Viktiga juridiska överväganden</h3>
+    <ul>
+      <li>Vårdintyget är giltigt i 4 dagar efter utfärdande</li>
+      <li>Undersökningen måste vara personlig och aktuell</li>
+      <li>Du kan inte skriva ett vårdintyg om du är släkt med eller har intressekonflikt med patienten (jäv)</li>
+      <li>Vid bedömning av vårdbehov, beakta om patienten är farlig för sig själv eller andra</li>
+      <li>Dokumentera patientens inställning till erbjuden psykiatrisk vård</li>
+    </ul>
+    <h3>Etiska överväganden</h3>
+    <ul>
+      <li>Tvångsvård bör endast användas när alla andra alternativ har övervägts och uteslutits</li>
+      <li>Respektera patientens värdighet och integritet även vid tvångsvård</li>
+      <li>Dokumentera tydligt varför mindre ingripande åtgärder inte är tillräckliga</li>
+      <li>Sträva efter att involvera patienten i vårdplanering så mycket som möjligt</li>
+      <li>Varje beslut om tvångsvård kräver en individuell bedömning av det aktuella fallet</li>
+    </ul>
+    <div class="vi-actions"><button class="btn" data-action="goto" data-section="intro">← Tillbaka till start</button></div>
+  </div>`;
+}
+
+function viewGuidelines(){
+  return `
+  <div class="vi-legal">
+    <h3 style="margin-top:0;">Grundprinciper</h3>
+    <ul>
+      <li>Var objektiv och faktabaserad</li>
+      <li>Dokumentera observerbara beteenden och uttalanden</li>
+      <li>Undvik subjektiva tolkningar utan stödjande fakta</li>
+      <li>Var specifik och konkret i dina beskrivningar</li>
+      <li>Dokumentera både patienthistorik och dina direkta observationer</li>
+      <li>Artikulera tydligt varför tvångsvård är nödvändig</li>
+    </ul>
+    <div class="vi-sub"><strong>Iakttagelser vid undersökningen:</strong>
+      <ul style="margin:0.3rem 0 0;padding-left:1.2rem;">
+        <li>Beskriv psykiskt status (sinnesstämning, affekt, tankeinnehåll, tankeprocess, kognition)</li>
+        <li>Dokumentera psykiatriska symtom (hallucinationer, vanföreställningar, suicidtankar, etc.)</li>
+        <li>Notera grad av sjukdomsinsikt och omdöme</li>
+        <li>Beskriv observerbara beteenden under undersökningen</li>
+        <li>Inkludera relevanta somatiska fynd</li>
+      </ul></div>
+    <div class="vi-sub"><strong>Bedömning av patientens allvarliga psykiska störning:</strong>
+      <ul style="margin:0.3rem 0 0;padding-left:1.2rem;">
+        <li>Specificera arten och graden av den psykiska störningen</li>
+        <li>Använd explicit formuleringen "allvarlig psykisk störning"</li>
+        <li>Förklara hur symtomen utgör en allvarlig psykisk störning</li>
+        <li>Beskriv hur störningen påverkar patientens funktionsförmåga</li>
+      </ul></div>
+    <div class="vi-sub"><strong>Bedömning av patientens vårdbehov:</strong>
+      <ul style="margin:0.3rem 0 0;padding-left:1.2rem;">
+        <li>Använd ordet "oundgängligt" (juridiskt krav)</li>
+        <li>Förklara varför öppenvård är otillräcklig</li>
+        <li>Dokumentera risker om patienten inte får tvångsvård</li>
+        <li>Om relevant, adressera fara för sig själv eller andra</li>
+        <li>Beskriv patientens sociala situation och varför den inte kan kompensera för vårdbehovet</li>
+      </ul></div>
+    <div class="vi-actions"><button class="btn" data-action="goto" data-section="intro">← Tillbaka till start</button></div>
+  </div>`;
+}
+
+function attitudeHTML(){
+  const op = state.formData.patientAttitude === 'opposes' ? 'checked' : '';
+  const ac = state.formData.patientAttitude === 'accepts' ? 'checked' : '';
+  let guide = "";
+  if(state.showGuidance.attitude){
+    guide = `<div class="vi-guide"><h5>Vägledning: Patientens inställning</h5><ul>
+      <li>Detta är det tredje obligatoriska villkoret för tvångsvård</li>
+      <li><strong>Patienten motsätter sig vården:</strong> Välj detta om patienten uttryckligen säger nej till vård</li>
+      <li><strong>Patienten accepterar vården men…</strong>: Välj detta om patienten säger ja, men:
+        <ul>
+          <li>Det finns skäl att tro att samtycket inte är grundat pga patientens tillstånd</li>
+          <li>Patienten tidigare visat ambivalens eller växlande inställning</li>
+          <li>Patienten troligen inte kommer att fullfölja sin acceptans när behandling inleds</li>
+        </ul></li></ul></div>`;
+  }
+  return `
+  <div class="vi-field">
+    <h3>Patientens inställning till erbjuden psykiatrisk vård
+      <button class="vi-guide-btn" data-action="toggle" data-field="attitude">ⓘ Vägledning</button>
+    </h3>
+    ${guide}
+    <div class="vi-radio">
+      <label><input type="radio" name="attitude" value="opposes" ${op}><span>Patienten motsätter sig vården</span></label>
+      <label><input type="radio" name="attitude" value="accepts" ${ac}><span>Patienten accepterar vården men det finns grundad anledning att tro att den inte kan ges med dennes samtycke</span></label>
+    </div>
+    <p class="vi-tips" style="margin-top:0.5rem;">Tips: Välj lämpligt alternativ baserat på patientens uttalade inställning och din bedömning av dennes förmåga till grundat samtycke.</p>
+  </div>`;
+}
+
+function viewTemplate(){
+  return `
+  <h2 class="section-title" style="margin-top:0;">Vårdintyg mall: ${esc(conditionLabels[state.condition] || "")}</h2>
+  <div class="vi-field">${fieldHTML('observations','Iakttagelser vid undersökningen','h3',{big:true,spell:true,tip:TIPS.observations})}</div>
+  <div class="vi-field">${fieldHTML('disorder','Bedömning av patientens allvarliga psykiska störning','h3',{spell:true,tip:TIPS.disorder})}</div>
+  <div class="vi-field">${fieldHTML('careNeeds','Bedömning av patientens vårdbehov','h3',{big:true,spell:true,tip:TIPS.careNeeds})}</div>
+  <h3 class="section-title">Eventuella övriga underlag av betydelse för bedömningen</h3>
+  <div class="vi-sub">${fieldHTML('patientInfo','Uppgifter från patienten själv','h4',{})}</div>
+  <div class="vi-sub">${fieldHTML('otherPersonInfo','Information från andra personer än patienten','h4',{})}</div>
+  <div class="vi-sub">${fieldHTML('journalInfo','Uppgifter från patientens journal','h4',{})}</div>
+  <div class="vi-sub">${fieldHTML('otherDocsInfo','Uppgifter från andra handlingar än patientens journal','h4',{})}</div>
+  ${attitudeHTML()}
+  <div class="vi-actions">
+    <button class="btn" data-action="export">↓ Exportera vårdintyg (.txt)</button>
+    <button class="btn secondary" data-action="copy">Kopiera text</button>
+    <button class="btn secondary" data-action="goto" data-section="intro">← Tillbaka till start</button>
+  </div>`;
+}
+
+const titles = { intro:"Vårdintygs-assistent", legal:"Juridiska krav för LPT",
+  guidelines:"Vägledning för att skriva ett vårdintyg", template:"Vårdintyg – mallgenerator" };
+
+function render(scrollTop){
+  document.getElementById('vi-title').textContent = titles[state.activeSection];
+  const app = document.getElementById('vi-app');
+  if(state.activeSection==='intro') app.innerHTML = viewIntro();
+  else if(state.activeSection==='legal') app.innerHTML = viewLegal();
+  else if(state.activeSection==='guidelines') app.innerHTML = viewGuidelines();
+  else app.innerHTML = viewTemplate();
+  // hydrate textareas
+  if(state.activeSection==='template'){
+    app.querySelectorAll('textarea[data-field]').forEach(ta=>{
+      ta.value = state.formData[ta.dataset.field] || "";
+    });
+  }
+  if(scrollTop) window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* ---------- Logic ---------- */
+function selectCondition(cond){
+  state.condition = cond;
+  const t = templates[cond] || templates.blank;
+  state.formData = { observations:t.observations, disorder:t.disorder, careNeeds:t.careNeeds,
+    patientAttitude:'opposes', patientInfo:t.patientInfo, otherPersonInfo:t.otherPersonInfo,
+    journalInfo:t.journalInfo, otherDocsInfo:t.otherDocsInfo };
+  Object.keys(state.showGuidance).forEach(k=>state.showGuidance[k]=false);
+  state.activeSection = 'template';
+  render(true);
+}
+
+function appendSnippet(field, raw){
+  const snip = raw.trim();
+  const cur = (state.formData[field] || "").replace(/\s+$/, "");
+  // separate from previous sentence with a full stop
+  const sep = cur ? (/[.!?:]$/.test(cur) ? " " : ". ") : "";
+  // add a trailing full stop if this snippet is a complete sentence
+  const fragment = /\b(att|genom|av|på|till|för|med|som)$/i.test(snip);
+  const tail = (!fragment && !/[.!?:]$/.test(snip)) ? "." : "";
+  state.formData[field] = autocorrect(cur + sep + snip + tail);
+}
+
+function buildVardintygText(){
+  const d = new Date().toLocaleDateString('sv-SE');
+  const f = state.formData;
+  const attitude = f.patientAttitude==='opposes'
+    ? 'Patienten motsätter sig vården'
+    : 'Patienten accepterar vården men det finns grundad anledning att tro att den inte kan ges med dennes samtycke';
+  let out = `VÅRDINTYG - ${d}
+
+IAKTTAGELSER VID UNDERSÖKNINGEN:
+${f.observations || ''}
+
+BEDÖMNING AV PATIENTENS ALLVARLIGA PSYKISKA STÖRNING:
+${f.disorder || ''}
+
+BEDÖMNING AV PATIENTENS VÅRDBEHOV:
+${f.careNeeds || ''}`;
+
+  const underlag = [
+    ['Uppgifter från patienten själv', f.patientInfo],
+    ['Information från andra personer än patienten', f.otherPersonInfo],
+    ['Uppgifter från patientens journal', f.journalInfo],
+    ['Uppgifter från andra handlingar än patientens journal', f.otherDocsInfo]
+  ].filter(u => u[1] && u[1].trim());
+
+  if(underlag.length){
+    out += `\n\nÖVRIGA UNDERLAG AV BETYDELSE FÖR BEDÖMNINGEN:`;
+    underlag.forEach(u => { out += `\n\n${u[0]}:\n${u[1]}`; });
+  }
+
+  out += `\n\nPATIENTENS INSTÄLLNING TILL ERBJUDEN PSYKIATRISK VÅRD:\n${attitude}\n`;
+  return out;
+}
+function validate(){
+  const e = [];
+  if(!state.formData.observations || state.formData.observations.length < 50)
+    e.push("Iakttagelser vid undersökningen är för kortfattade. Beskriv mer detaljerat patientens beteende och symtom.");
+  if(!state.formData.disorder || !state.formData.disorder.toLowerCase().includes("allvarlig psykisk störning"))
+    e.push("Bedömningen måste uttryckligen ange att tillståndet utgör en 'allvarlig psykisk störning'.");
+  if(!state.formData.careNeeds || !state.formData.careNeeds.toLowerCase().includes("oundgänglig"))
+    e.push("Vårdbehovet måste beskrivas som 'oundgängligt' för att uppfylla lagens krav.");
+  return e;
+}
+function exportText(){
+  const errs = validate();
+  if(errs.length){ alert("Följande problem hittades i vårdintyget:\n\n" + errs.join("\n")); return; }
+  const d = new Date().toLocaleDateString('sv-SE');
+  const blob = new Blob([buildVardintygText()], {type:'text/plain'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = `vardintyg_${d.replace(/-/g,'')}.txt`;
+  document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url);
+}
+function copyText(){
+  const errs = validate();
+  if(errs.length){ alert("Följande problem hittades i vårdintyget:\n\n" + errs.join("\n")); return; }
+  navigator.clipboard.writeText(buildVardintygText()).then(
+    ()=>alert("Vårdintyget är kopierat till urklipp."),
+    ()=>alert("Kunde inte kopiera automatiskt – markera och kopiera manuellt.")
+  );
+}
+
+/* ---------- Events ---------- */
+const app = document.getElementById('vi-app');
+app.addEventListener('click', e=>{
+  const btn = e.target.closest('[data-action]'); if(!btn) return;
+  const a = btn.dataset.action;
+  if(a==='select') selectCondition(btn.dataset.condition);
+  else if(a==='goto'){ state.activeSection = btn.dataset.section; render(true); }
+  else if(a==='toggle'){ const f=btn.dataset.field; state.showGuidance[f]=!state.showGuidance[f]; render(false); }
+  else if(a==='append'){
+    const f=btn.dataset.field;
+    appendSnippet(f, CHIPS[f][+btn.dataset.idx][1]);
+    const ta = app.querySelector(`textarea[data-field="${f}"]`);
+    if(ta){ ta.value = state.formData[f]; ta.focus(); ta.setSelectionRange(ta.value.length, ta.value.length); }
+  }
+  else if(a==='export') exportText();
+  else if(a==='copy') copyText();
+});
+app.addEventListener('input', e=>{
+  const ta = e.target.closest('textarea[data-field]'); if(!ta) return;
+  const corrected = autocorrect(ta.value);
+  state.formData[ta.dataset.field] = corrected;
+  if(corrected !== ta.value) ta.value = corrected;
+});
+app.addEventListener('change', e=>{
+  if(e.target.name==='attitude') state.formData.patientAttitude = e.target.value;
+});
+
+render();
+</script>
+</body>
+</html>

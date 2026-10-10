@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kardiologi — Psykkonsult</title>
+<meta name="description" content="Essentiell kardiologi för psykiater med särskilt hänsyn till psykofarmaka.">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+</head>
+<body>
+<header class="site-header">
+  <div class="inner">
+    <a class="brand" href="index.html"><span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><g transform="rotate(-45 12 12)"><rect x="3" y="8.5" width="18" height="7" rx="3.5"/><line x1="12" y1="8.5" x2="12" y2="15.5"/></g></svg></span><span class="brand-text">Psykkonsult<span class="brand-tag">Stöd för psykiatrisk jour och konsultation</span></span></a>
+    <nav class="site-nav">
+      <a href="verktyg.html">Verktyg</a>
+      <a href="lpt-lvm.html">Lagar</a>
+      <a href="psykofarmaka.html" class="nav-akut">Akut psykofarmaka</a>
+      <a href="specialist-psykofarmaka.html">Specialist psykofarmaka</a>
+      <a href="beroende.html">Beroende</a>
+      <a href="internmedicin.html">Internmedicin</a>
+      <a href="kardiologi.html" class="active">Kardiologi</a>
+      <a href="infektion.html">Infektion</a>
+      <a href="neurologi.html">Neurologi</a>
+      <a href="toxidrom.html">Toxidrom</a>
+      <a href="issb.html">ISSB</a>
+      <a href="akutmedicin.html" class="nav-akut">Akut livshotande tillstånd</a>
+      <a href="lankar.html">Länkar</a>
+      <a href="om.html">Om</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <h1 class="page-title">Kardiologi</h1>
+  <p class="page-sub">Essentiell kardiologi för psykiater med särskilt hänsyn till psykofarmaka.</p>
+
+  <a class="card akut" href="akutmedicin.html#hjartstopp" style="margin:0.8rem 0;">
+    <h3>Hjärtstopp</h3>
+    <p>A-HLR: 50 000-larm + akutvagn, HLR 30:2 → Akut livshotande tillstånd ↗</p>
+  </a>
+
+  <div class="card-grid">
+    <a class="card" href="#ekg"><h3>EKG</h3><p>Systematisk tolkning, arytmier, farliga mönster.</p></a>
+    <a class="card" href="#qt"><h3>QTc → TdP riskbedömning</h3><p>Gränsvärden, orsaker, riskläkemedel.</p></a>
+    <a class="card" href="#akut"><h3>AKS</h3><p>Akut koronart syndrom.</p></a>
+    <a class="card" href="#hjartsvikt"><h3>Hjärtsvikt</h3><p>Typer, utredning, basbehandling.</p></a>
+  </div>
+
+  <h2 class="section-title" id="ekg">EKG</h2>
+
+  <p style="font-weight:700;color:var(--accent-strong);font-size:1.05rem;margin:0.9rem 0 0.3rem;border-bottom:1px solid var(--border);padding-bottom:0.25rem;">Tolkning</p>
+  <p style="font-size:0.85rem;color:var(--muted);margin:0.2rem 0 0.4rem;">Systematisk genomgång enligt SweSEM.</p>
+
+  <div class="table-wrap"><table class="compact hand"><tbody>
+    <tr><td>O</td><td>Frekvens · rytm</td></tr>
+    <tr><td>P</td><td>P-våg · PQ-sträcka</td></tr>
+    <tr><td>Q</td><td>Q-våg · QRS-komplex</td></tr>
+    <tr><td>R</td><td>Elaxel · R-våg</td></tr>
+    <tr><td>S</td><td>S-våg · ST-sträcka</td></tr>
+    <tr><td>T</td><td>T-våg · QT-tid</td></tr>
+    <tr><td>+</td><td>Övriga fynd · bedömning</td></tr>
+  </tbody></table></div>
+
+  <p class="sub-label"><b>Frekvens &amp; rytm</b></p>
+  <p style="font-size:0.9rem;color:var(--muted);margin:0.2rem 0 0;"><b>Frekvens</b> = tal / antal 5-mm-rutor i R-R, beroende på pappershastighet:</p>
+  <div class="table-wrap"><table class="compact"><thead><tr><th>Pappershastighet</th><th>Frekvens</th></tr></thead><tbody>
+    <tr><td>25 mm/s</td><td>300 / antal rutor</td></tr>
+    <tr><td>50 mm/s</td><td>600 / antal rutor</td></tr>
+    <tr><td>12,5 mm/s</td><td>150 / antal rutor</td></tr>
+  </tbody></table></div>
+  <ul style="margin:0.4rem 0 0;padding-left:1.2rem;color:var(--muted);font-size:0.9rem;">
+    <li><b>Sinusrytm:</b> konstant P före varje QRS, varje P följs av QRS, P positiv i avledning II.</li>
+    <li><b>Frekvens:</b> normofrekvent <b>50–100/min</b> · bradykardi <b>&lt; 50/min</b> · takykardi <b>&gt; 100/min</b>.</li>
+    <li><b>Förmaksflimmer:</b> inga P-vågor, <b>oregelbundet oregelbunden</b> rytm.</li>
+    <li><b>AV-block I:</b> PQ &gt; 0,2 s, varje P → QRS. <b>II Mobitz 1</b> (Wenckebach): PQ ökar tills slag faller bort. <b>II Mobitz 2:</b> konstant PQ, plötsligt bortfall (högre risk för progress). <b>III:</b> AV-dissociation.</li>
+  </ul>
+
+  <p class="sub-label"><b>P-våg &amp; PQ-sträcka</b></p>
+  <ul style="margin:0.2rem 0 0;padding-left:1.2rem;color:var(--muted);font-size:0.9rem;">
+    <li>Normal PQ 0,12–0,2 s. <b>Kort PQ + deltavåg → preexcitation (WPW)</b>.</li>
+    <li>Negativ P i avl II → felplacerade elektroder, retrograd P (AV-nod) eller ektopiskt fokus.</li>
+  </ul>
+
+  <p class="sub-label"><b>QRS-komplex</b></p>
+  <ul style="margin:0.2rem 0 0;padding-left:1.2rem;color:var(--muted);font-size:0.9rem;">
+    <li><b>Bredd ≥ 120 ms (vuxen) → skänkelblock.</b> Vänster (LBBB): monofasiskt QS i V1, monofasisk R i V6/I. Höger (RBBB): RSR′ ("M-form") i V1, breda S i V6/I.</li>
+    <li><b>Andra breda QRS:</b> ventrikulär rytm / pacemaker / antidrom AVRT, <b>hyperkalemi</b>, membranstabiliserande intox (TCA, fenantoin), hypotermi.</li>
+    <li><b>Vänsterkammarhypertrofi:</b> S(V1) + R(V5 el. V6) &gt; 35 mm; R i aVL &gt; 12 mm.</li>
+    <li><b>Högerkammarhypertrofi:</b> R &gt; S i V1; högerställd elaxel; T-invertering V1–V3.</li>
+  </ul>
+
+  <p id="arytmi" style="font-weight:700;color:var(--accent-strong);font-size:1.05rem;margin:1.8rem 0 0.3rem;border-bottom:1px solid var(--border);padding-bottom:0.25rem;">Arytmier</p>
+  <div class="btn-row" style="margin-top:0.5rem;">
+    <a class="btn secondary" href="Arytmier-oversikt.pdf" target="_blank" rel="noopener">↓ Arytmier — översikt (PDF)</a>
+  </div>
+
+  <p class="sub-label"><b>Elaxel</b></p>
+  <div class="table-wrap"><table class="compact hand"><thead><tr><th>QRS I (vä tumme)</th><th>QRS II (hö tumme)</th><th>El-axel</th></tr></thead><tbody>
+    <tr>
+      <td><span class="axcell"><svg class="thumb up" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.72l1.38-9a2 2 0 0 0-2-2.28zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>positiv</span></td>
+      <td><span class="axcell"><svg class="thumb up flip" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.72l1.38-9a2 2 0 0 0-2-2.28zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>positiv</span></td>
+      <td>Normal (−30° till +90°)</td></tr>
+    <tr>
+      <td><span class="axcell"><svg class="thumb down flip" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.72l-1.38 9a2 2 0 0 0 2 2.28zm7-13h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17"/></svg>negativ</span></td>
+      <td><span class="axcell"><svg class="thumb up flip" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.72l1.38-9a2 2 0 0 0-2-2.28zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>positiv</span></td>
+      <td>Högerställd (+90° till +150°)</td></tr>
+    <tr>
+      <td><span class="axcell"><svg class="thumb up" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.72l1.38-9a2 2 0 0 0-2-2.28zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>positiv</span></td>
+      <td><span class="axcell"><svg class="thumb down" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.72l-1.38 9a2 2 0 0 0 2 2.28zm7-13h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17"/></svg>negativ</span></td>
+      <td>Vänsterställd (−30° till −90°)</td></tr>
+    <tr>
+      <td><span class="axcell"><svg class="thumb down flip" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.72l-1.38 9a2 2 0 0 0 2 2.28zm7-13h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17"/></svg>negativ</span></td>
+      <td><span class="axcell"><svg class="thumb down" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.72l-1.38 9a2 2 0 0 0 2 2.28zm7-13h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17"/></svg>negativ</span></td>
+      <td>Extrem axel</td></tr>
+  </tbody></table></div>
+  <p class="legend" style="margin-top:0.3rem;">Minnesregel: håll upp dina egna tummar framför ansiktet — <b>vänster tumme = QRS i I</b>, <b>höger tumme = QRS i II</b>. Tumme upp = positiv, ner = negativ QRS.</p>
+  <p class="legend">Högerställd: högerkammarbelastning (t.ex. lungemboli). Vänsterställd: främre fascikelblock. Övervägande negativ i I &amp; II → oftast felplacerade elektroder.</p>
+
+  <p class="sub-label"><b>ST-sträcka &amp; ischemi</b></p>
+  <div class="table-wrap"><table class="compact"><thead><tr><th>Avledning</th><th>Kärl</th><th>Region</th></tr></thead><tbody>
+    <tr><td>V1–V4</td><td>LAD</td><td>Anteroseptalt</td></tr>
+    <tr><td>II, III, aVF</td><td>RCA (ev. cx)</td><td>Inferiort — obs V4R (högerkammar)</td></tr>
+    <tr><td>I, aVL, V5–V6</td><td>Cx / LAD</td><td>Lateralt</td></tr>
+    <tr><td>ST-sänkning V1–V2</td><td>Cx + LAD/RCA</td><td>Posterior → ta V7–V9</td></tr>
+  </tbody></table></div>
+  <ul style="margin:0.2rem 0 0;padding-left:1.2rem;color:var(--muted);font-size:0.9rem;">
+    <li><b>Sgarbossa</b> (vid vä skänkelblock): ST-höjning ≥ 1 mm konkordant · ST-sänkning ≥ 1 mm V1–V3 · ST-höjning &gt; 25 % av S-djupet.</li>
+    <li><b>ST-höjning DDx:</b> tidig repolarisation (unga friska män), LVH, vä skänkelblock, brugada, hyperkalemi, hyperkalcemi, hypotermi, perikardit.</li>
+    <li><b>Perikardit vs STEMI:</b> perikardit = generella <b>konkava</b> ST-höjningar + PQ-sänkning, inga reciproka sänkningar.</li>
+  </ul>
+  <div class="btn-row" style="margin-top:0.5rem;">
+    <a class="btn secondary" href="EKG-avledningar%20och%20kranskärlsterritorier.pdf" target="_blank" rel="noopener">↓ EKG-avledningar &amp; kranskärlsterritorier (PDF)</a>
+  </div>
+
+  <p class="sub-label"><b>T-våg</b></p>
+  <ul style="margin:0.2rem 0 0;padding-left:1.2rem;color:var(--muted);font-size:0.9rem;">
+    <li><b>Inverterade T:</b> ischemi, belastning (lungemboli → V1–V3), cerebrala T (stroke/SAB), <b>Wellens</b> (djupa/bifasiska T V2–V3 = tät LAD-stenos).</li>
+    <li><b>Stora/toppiga T:</b> hyperkalemi; hyperakuta T vid tidig ischemi.</li>
+  </ul>
+
+  <p class="sub-label"><b>Farliga mönster / hypotesdrivet</b></p>
+  <ul style="margin:0.2rem 0 0;padding-left:1.2rem;color:var(--muted);font-size:0.9rem;">
+    <li><b>Hyperkalemi:</b> toppiga T → flackande/försvinnande P → breda QRS → sinusvågsmönster → risk för VF/asystoli. Kontrollera <b>S-kalium</b>.</li>
+    <li><b>Brugada:</b> nedåtsluttande ST-höjning V1–V2 + (in)komplett RBBB → risk för plötslig död, överväg ICD.</li>
+    <li><b>Hypotermi (&lt; 32°):</b> Osborn-(J)-våg.</li>
+    <li><b>Höger-/posteriorinfarkt:</b> komplettera med <b>V4R</b> resp. <b>V7–V9</b>.</li>
+    <li><b>Hjärttamponad:</b> elektrisk alternans (svängande QRS-amplitud) + låg voltage + takykardi → misstänk stor perikardvätska, akut ekokardiografi.</li>
+  </ul>
+  <div class="note todo">Att göra: bygg ut Farliga mönster till en mer utförlig sektion + länka en PDF med EKG-remsor (exempelkurvor).</div>
+  <p class="legend">Källa: SweSEM utbildningsutskott — EKG-tolkning (2019-01-30).</p>
+
+  <h2 class="section-title" id="qt">QTc → TdP riskbedömning</h2>
+  <div class="btn-row" style="margin:0.4rem 0 0.2rem;">
+    <a class="btn secondary" href="https://verktyg.internetmedicin.se/kalkylatorer/qtc" target="_blank" rel="noopener">QTc-kalkylator ↗</a>
+  </div>
+  <p class="sub-label"><b>Gränsvärden</b></p>
+  <ul style="margin:0.2rem 0 0;padding-left:1.2rem;color:var(--muted);font-size:0.9rem;">
+    <li>Förlängd QTc: <b>&gt; 450 ms (män)</b>, <b>&gt; 470 ms (kvinnor)</b> (barn 1–15 år &gt; 460 ms).</li>
+    <li>Risk för <b>torsades de pointes</b> (polymorf VT) stiger tydligt vid <b>QTc &gt; 500 ms</b> eller ökning &gt; 60 ms från baslinje.</li>
+  </ul>
+  <p class="sub-label"><b>QT-risk — läkemedel</b></p>
+  <p style="font-size:0.92rem;color:var(--accent-strong);font-weight:600;margin:0.3rem 0 0.15rem;">Psykofarmaka</p>
+  <div class="table-wrap"><table class="compact"><tbody>
+    <tr><td>Hög risk<br><span style="font-weight:400;color:var(--muted);font-size:0.78rem;">även i monoterapi</span></td><td>haloperidol (iv/högdos) · citalopram · escitalopram · klorpromazin (Hibernal) · levomepromazin (Nozinan) · metadon (dosberoende) · droperidol · hydroxizin (Atarax)</td></tr>
+    <tr><td>Medel / villkorlig<br><span style="font-weight:400;color:var(--muted);font-size:0.78rem;">obs i kombination</span></td><td>kvetiapin · risperidon/paliperidon · olanzapin · klozapin · aripiprazol (låg) · TCA (klomipramin, amitriptylin, nortriptylin) · venlafaxin · litium · trazodon · mirtazapin (låg) · prometazin (Lergigan) · alimemazin (Theralen) · övriga SSRI (sertralin, fluoxetin, paroxetin – låg)</td></tr>
+  </tbody></table></div>
+  <p style="font-size:0.92rem;color:var(--accent-strong);font-weight:600;margin:0.6rem 0 0.15rem;">Icke-psykofarmaka</p>
+  <div class="table-wrap"><table class="compact"><tbody>
+    <tr><td>Antibiotika / antimykotika</td><td>makrolider (erytromycin, klaritromycin) · fluorokinoloner (moxifloxacin) · flukonazol</td></tr>
+    <tr><td>Antiarytmika</td><td>klass III (sotalol, amiodaron) · klass IA (kinidin)</td></tr>
+    <tr><td>Antiemetika</td><td>ondansetron · metoklopramid</td></tr>
+    <tr><td>Övrigt</td><td>antimalaria (klorokin / hydroxiklorokin) · demens (donepezil)</td></tr>
+    <tr><td>Indirekt (↓ K⁺ / ↓ Mg²⁺)</td><td>diuretika (loop / tiazid)</td></tr>
+  </tbody></table></div>
+  <p class="legend">Kolla alltid <a href="https://fass.se/health" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;">FASS</a> / <a href="https://janusmed.se/interaktioner" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;">Janusmed</a> vid behov.</p>
+  <div class="note danger">Risk för förlängd QTc och TdP är sällan ett enskilt läkemedel utan <b>kombinationen</b> av: QTc ≥ 500 ms och/eller flera QT-förlängande läkemedel, hypokalemi, hypomagnesemi, hypokalcemi, kvinnligt kön, hög ålder, bradykardi, hjärtsjukdom eller medfött långt QT-syndrom.</div>
+  <p class="sub-label"><b>Handläggning</b></p>
+  <ul style="margin:0.2rem 0 0;padding-left:1.2rem;color:var(--muted);font-size:0.9rem;">
+    <li>Baslinje-EKG före och efter insättning av QT-förlängande psykofarmaka; korrigera <b>K⁺ och Mg²⁺</b>.</li>
+    <li>Undvik kombinationer av QT-förlängande läkemedel. Vid QTc &gt; 500 ms eller ökning &gt; 60 ms: sänk dos / byt preparat, kontrollera elektrolyter.</li>
+  </ul>
+
+  <h2 class="section-title" id="akut">AKS — akut koronart syndrom</h2>
+  <div class="note todo">Fyll i utredning och akut handläggning.</div>
+  <details class="block"><summary>Lägg till avsnitt</summary><div class="body"><p class="placeholder">Innehåll fylls i.</p></div></details>
+
+  <h2 class="section-title" id="hjartsvikt">Hjärtsvikt</h2>
+  <p style="font-size:0.85rem;color:var(--muted);margin:0.2rem 0 0;">Inte ovanligt hos patienter på psykiatrisk avdelning — känn igen dekompensation, basbehandling och läkemedelsfällor.</p>
+  <div class="note todo"><b>Att göra:</b> avsnittet behöver redigeras och kortas — stäm av mot lokala riktlinjer.</div>
+
+  <p class="sub-label" style="font-size:0.95rem;margin-top:0.8rem;"><b>Typer (efter ejektionsfraktion)</b></p>
+  <div class="table-wrap">
+    <table class="compact">
+      <tbody>
+        <tr><td>HFrEF</td><td>EF ≤ 40 % (nedsatt)</td></tr>
+        <tr><td>HFmrEF</td><td>EF 41–49 % (lätt nedsatt)</td></tr>
+        <tr><td>HFpEF</td><td>EF ≥ 50 % (bevarad)</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="margin:0.4rem 0 0;font-size:0.9rem;color:var(--muted);"><b>NYHA I–IV</b> graderar symtom: I inga besvär → IV besvär i vila.</p>
+
+  <p class="sub-label" style="font-size:0.95rem;margin-top:1rem;"><b>Utredning</b></p>
+  <ul style="margin:0.2rem 0 0;padding-left:1.2rem;color:var(--muted);font-size:0.9rem;">
+    <li><b>Symtom/fynd:</b> dyspné, ortopné, nattlig dyspné, trötthet, bensvullnad/ödem, halsvenstas, rassel.</li>
+    <li><b>NT-proBNP</b> — normalt värde talar starkt <i>emot</i> hjärtsvikt.</li>
+    <li><b>EKG</b> (sällan helt normalt vid HF), <b>ekokardiografi</b> (avgör EF), lungröntgen.</li>
+    <li>Blodprover: elektrolyter, kreatinin, Hb, TSH, järnstatus.</li>
+  </ul>
+
+  <p class="sub-label" style="font-size:0.95rem;margin-top:1rem;"><b>Basbehandling — HFrEF (fyra hörnstenar)</b></p>
+  <ul style="margin:0.2rem 0 0;padding-left:1.2rem;color:var(--muted);font-size:0.9rem;">
+    <li><b>ARNI</b> (sakubitril/valsartan) eller ACE-hämmare/ARB.</li>
+    <li><b>Betablockare.</b></li>
+    <li><b>MRA</b> (spironolakton/eplerenon).</li>
+    <li><b>SGLT2-hämmare</b> (dapagliflozin/empagliflozin).</li>
+    <li><b>Loopdiuretika</b> (furosemid) för symtom/ödem.</li>
+  </ul>
+  <p class="legend">Alla fyra sätts in och titreras upp så snart som möjligt. SGLT2-hämmare rekommenderas även vid HFmrEF och HFpEF (ESC 2021/2023).</p>
+
+  <p class="sub-label" style="font-size:0.95rem;margin-top:1rem;"><b>Akut dekompensation</b></p>
+  <div class="note danger"><b>Röda flaggor:</b> vilodyspné, desaturation, lungödem, hypotoni/chock.<br>Initialt: sittande, syrgas vid SpO₂ &lt; 90 %, <b>iv loopdiuretika</b> (furosemid), nitrater vid högt blodtryck. Ta EKG, blodgas, NT-proBNP, troponin — <b>kontakta medicin/kardiolog</b>.</div>
+
+  <p class="sub-label" style="font-size:0.95rem;margin-top:1rem;"><b>Psykiatri-relevant</b></p>
+  <ul style="margin:0.2rem 0 0;padding-left:1.2rem;color:var(--muted);font-size:0.9rem;">
+    <li><b>NSAID</b> och kortison försämrar hjärtsvikt (vätskeretention) — undvik.</li>
+    <li><b>Klozapin</b> — risk för myokardit/kardiomyopati; flera antipsykotika och TCA ger QT-förlängning.</li>
+    <li><b>Litium</b> — smalt terapeutiskt fönster; diuretika (tiazid/loop), NSAID och vätske-/saltbalans påverkar litiumnivån.</li>
+    <li>Väg patienten och följ vätske-/saltbalans.</li>
+  </ul>
+
+  <h2 class="section-title">Övrigt</h2>
+  <div class="note todo">Lägg till t.ex. synkope, elektrolytpåverkan.</div>
+  <details class="block"><summary>Lägg till avsnitt</summary><div class="body"><p class="placeholder">Innehåll fylls i.</p></div></details>
+</main>
+
+<footer class="site-footer">
+  psykkonsult.se · <a href="index.html">Hem</a> · <a href="om.html">Om</a>
+</footer>
+</body>
+</html>
