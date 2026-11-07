@@ -36,7 +36,7 @@
   <p class="page-sub">Läkemedel som i regel initieras och sköts av specialist i psykiatri.</p>
 
   <div class="card-grid">
-    <a class="card" href="#litium"><h3>Litium</h3><p>Dos, målnivå, kontroller, intox.</p></a>
+    <a class="card" href="#litium"><h3>Litium</h3><p>Dos, målnivå, kontroller, långtidsbiverkningar, intox.</p></a>
     <a class="card" href="#klozapin"><h3>Klozapin</h3><p>Kontroller, titrering, biverkningar.</p></a>
     <a class="card" href="#lamotrigin"><h3>Lamotrigin</h3><p>Upptitrering, återinsättning.</p></a>
     <a class="card" href="#lai"><h3>LAI (depå)</h3><p>Uppstart och underhåll.</p></a>
@@ -56,6 +56,102 @@
 
   <p class="sub-label" style="font-size:0.95rem;margin-top:1rem;"><b>Monitorering / kontroller</b></p>
   <p class="placeholder">Innehåll fylls i — provtagning före insättning, dag 7/14/28, underhåll.</p>
+
+  <p class="sub-label" style="font-size:0.95rem;margin-top:1rem;"><b>Långtidsbiverkningar &amp; handläggning</b></p>
+  <p style="margin:0.2rem 0 0;font-size:0.9rem;color:var(--muted);">Litium ger förutsägbara långtidseffekter på <b>njure, bisköldkörtlar och tyreoidea</b>. De flesta fångas av rutinkontrollerna och kan hanteras utan att litium sätts ut. Ändring eller utsättning sker i samråd med specialist i psykiatri. Enligt <b>SVF bipolär sjukdom (Psykiatri Skåne)</b> ska patienter med litium <b>alltid följas upp inom specialistpsykiatrin</b>, och utebliven provtagning bör leda till utebliven receptförnyelse.</p>
+
+  <div class="table-wrap">
+    <table class="compact">
+      <tbody>
+        <tr><td>Före insättning</td><td>Hb, LPK, glukos, HbA1c, kreatinin inkl. eGFR, Na, K, <b>Ca-jon</b>, TSH, T3, T4, urinsticka, vikt, längd, BT, <b>EKG</b>.</td></tr>
+        <tr><td>Var 4:e månad</td><td><b>S-litium</b> (dalvärde, 12 h efter senaste dos), <b>kreatinin inkl. eGFR, TSH, T3, T4</b></td></tr>
+        <tr><td>1 gång/år</td><td>Na, K, <b>Ca-jon</b>, HbA1c, vikt, BT</td></tr>
+        <tr><td>Extra S-litium</td><td>Vid interkurrent sjukdom, dehydrering, dosändring, nytt interagerande läkemedel (NSAID, tiazid, ACE-hämmare/ARB)</td></tr>
+        <tr><td>Målnivå</td><td>0,5–0,9 mmol/L underhåll; äldre i nedre delen av intervallet</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="legend">Intervall enligt <a href="svf-bipolar-sjukdom-skane-2022.pdf" style="color:var(--accent);">SVF bipolär sjukdom, Psykiatri Skåne (2022) — PDF</a>. Följ eGFR-<b>trenden</b> mot utgångsvärdet, inte enstaka värden.</p>
+
+  <details class="block"><summary>1. Hyperparatyreoidism / hyperkalcemi</summary><div class="body">
+    <ul style="margin:0.2rem 0 0;padding-left:1.2rem;color:var(--muted);font-size:0.9rem;">
+      <li><b>Mekanism:</b> litium höjer set-point för kalciumkänsliga receptorn → mer PTH vid givet Ca. Ca och PTH ligger i snitt ~10 % högre än hos kontroller.</li>
+      <li><b>Förekomst:</b> hyperkalcemi hos ca <b>7 %</b> och HPT hos ca <b>5 %</b> av litiumbehandlade — ca <b>8–10 gånger</b> högre än i befolkningen (~0,5 %). <b>Risken ökar med dos (S-litium) och behandlingstid</b>, särskilt efter &gt; 10 år (systematisk översikt 2026).</li>
+      <li><b>Klinik:</b> ofta asymtomatisk. Hyperkalcemi kan ge trötthet, nedstämdhet, kognitiv påverkan, polyuri, njursten och osteoporos — <b>kan misstolkas som affektiv försämring</b>.</li>
+      <li><b>Screening:</b> albuminkorrigerat (eller joniserat) Ca minst årligen. Enbart Ca kan missa förhöjt PTH — mät PTH vid högt-normalt Ca eller symtom.</li>
+    </ul>
+    <p class="sub-label" style="font-size:0.88rem;margin-top:0.7rem;"><b>Handläggning enligt SVF Skåne</b></p>
+    <ul style="margin:0.2rem 0 0;padding-left:1.2rem;color:var(--muted);font-size:0.9rem;">
+      <li>Ca-jon tas före insättning och därefter <b>årligen</b>.</li>
+      <li>Förhöjt Ca-jon → <b>ta om S-Ca</b>. Fortsatt förhöjt → <b>remiss endokrinolog</b>.</li>
+      <li>Ha låg tröskel att kontrollera PTH vid högt-normalt eller förhöjt Ca, särskilt vid lång behandlingstid.</li>
+    </ul>
+    <p class="sub-label" style="font-size:0.88rem;margin-top:0.7rem;"><b>Fördjupning — stegvis algoritm</b> (IGSLI-konsensus, Kovacs 2022)</p>
+    <ul style="margin:0.2rem 0 0;padding-left:1.2rem;color:var(--muted);font-size:0.9rem;">
+      <li>Ca över referens → kontrollera <b>Ca + PTH inom 2 veckor</b>.</li>
+      <li>PTH normalt/högt → upprepa efter <b>1 månad</b>. PTH lågt → upprepa efter <b>1 vecka</b> och tänk PTH-oberoende orsak (malignitet, D-vitamin, m.m.).</li>
+      <li><b>Ca &gt; 2,8 mmol/L</b> → akut handläggning enligt hyperkalcemirutin.</li>
+      <li>Normaliserat → ny kontroll efter 6 månader.</li>
+      <li>Kvarstående Ca/PTH-avvikelse → <b>remiss endokrinolog</b>.</li>
+    </ul>
+    <p class="sub-label" style="font-size:0.88rem;margin-top:0.7rem;"><b>Behandling</b></p>
+    <ul style="margin:0.2rem 0 0;padding-left:1.2rem;color:var(--muted);font-size:0.9rem;">
+      <li><b>Sätt inte reflexmässigt ut litium</b> — risk för återfall, och etablerad HPT (adenom/hyperplasi) normaliseras inte alltid efter utsättning. Hos en del normaliseras Ca/PTH inom några månader efter utsättning.</li>
+      <li>Vetenskapligt underlag för handläggning är begränsat; beslut tas av endokrinolog/endokrinkirurg i samråd med psykiatrin:
+        <ul style="padding-left:1.1rem;">
+          <li>Lindrig, asymtomatisk: exspektans med kontroller.</li>
+          <li>Uttalad/symtomgivande: <b>paratyreoidektomi</b> — oftare flerkörtelsjukdom och sämre resultat än vid primär HPT.</li>
+          <li><b>Cinakalcet</b> som alternativ när kirurgi inte är aktuell och litium behöver fortsätta.</li>
+        </ul>
+      </li>
+    </ul>
+  </div></details>
+
+  <details class="block"><summary>2. Njurpåverkan — nefrogen diabetes insipidus &amp; kronisk njursjukdom</summary><div class="body">
+    <p class="sub-label" style="font-size:0.88rem;margin-top:0.3rem;"><b>a) Nefrogen diabetes insipidus (NDI)</b></p>
+    <ul style="margin:0.2rem 0 0;padding-left:1.2rem;color:var(--muted);font-size:0.9rem;">
+      <li>Vanligaste biverkan: polyuri, törst, muntorrhet. Koncentrationsförmågan kan bli <b>varaktigt</b> nedsatt vid långtidsbehandling.</li>
+      <li>Rekommendera vatten; undvik kaloriinnehållande drycker. Lägsta effektiva S-litium.</li>
+      <li><b>SVF Skåne:</b> mät urindygnsmängd — polyuri = <b>&gt; 3 L/dygn</b>. <b>Amilorid</b> kan provas för att minska urinmängden; S-litium påverkas vanligen inte men kontrolleras efter insättning. Tubulär påverkan är som regel reversibel.</li>
+      <li>Polyuri ökar risken för dehydrering → intoxikation. Informera om sjukdagsregler: vid kräkning, diarré, feber eller svårare dehydrering — pausa litium några dagar och kontrollera S-litium.</li>
+    </ul>
+    <p class="sub-label" style="font-size:0.88rem;margin-top:0.7rem;"><b>b) Kronisk njursjukdom (CKD)</b></p>
+    <ul style="margin:0.2rem 0 0;padding-left:1.2rem;color:var(--muted);font-size:0.9rem;">
+      <li>eGFR sjunker i snitt ~0,5 ml/min/år snabbare än förväntat, främst efter &gt; 10 års behandling; stor individuell variation. Litiumorsakad uremi förekommer men risken har minskat sedan säkrare kontrollrutiner infördes.</li>
+      <li><b>Riskfaktorer:</b> behandlingstid, ålder, nedsatt njurfunktion redan vid start (kraftigt ökad risk), tidigare intoxikation, upprepade höga nivåer (redan en enstaka S-Li &gt; 1,0 är associerad med eGFR-fall), interagerande läkemedel.</li>
+    </ul>
+    <p class="sub-label" style="font-size:0.88rem;margin-top:0.7rem;"><b>Handläggning</b></p>
+    <ul style="margin:0.2rem 0 0;padding-left:1.2rem;color:var(--muted);font-size:0.9rem;">
+      <li>Sikta på lägsta effektiva nivå (0,5–0,8 mmol/L); undvik toppar &gt; 1,0.</li>
+      <li>Undvik NSAID. Försiktighet med ACE-hämmare/ARB och diuretika — tätare S-litium vid insättning.</li>
+      <li>Sjunkande GFR → lägre litiumclearance: <b>dosreduktion och tätare S-litium</b>.</li>
+      <li><b>SVF Skåne: om eGFR sjunker &gt; 20 % från utgångsvärdet → kontakt med njurmedicinsk konsult.</b> Omvärdera indikationen för fortsatt litium (Skånelistan). Komplettera med U-albumin/kreatininkvot; remissgränser enligt regional CKD-riktlinje (Södra sjukvårdsregionen).</li>
+      <li>Fortsatt litium vs byte är ett gemensamt beslut psykiater–nefrolog–patient. Utsättning bromsar inte säkert progressen när eGFR redan är kraftigt nedsatt, medan risken för återfall är hög — beslutet blir individuellt.</li>
+    </ul>
+  </div></details>
+
+  <details class="block"><summary>3. Hypotyreos (och struma)</summary><div class="body">
+    <ul style="margin:0.2rem 0 0;padding-left:1.2rem;color:var(--muted);font-size:0.9rem;">
+      <li>Näst vanligaste biverkan efter polyuri: incidens ca 2 per 100 behandlingsår, prevalensen ökar med tiden (ca 30 % på tyroxin i svenskt långtidsmaterial). Vanligare hos kvinnor. <b>Ej dosberoende.</b></li>
+      <li>Hypotyreos kan ge trötthet och depressiva symtom — kontrollera TSH vid depressiv försämring.</li>
+      <li>Kan komma snabbt, <b>även under första behandlingsåret</b> (SVF Skåne). Följ TSH, T3, T4 var 4:e månad.</li>
+      <li><b>Handläggning enligt SVF Skåne:</b> <b>långsamt stigande TSH → levotyroxin</b> (Levaxin). Annan bild (snabb förändring, avvikande T3/T4, misstänkt hypertyreos/tyreoidit) → <b>remiss endokrinolog</b>. Litium behöver inte sättas ut.</li>
+      <li>Hypertyreos förekommer men är ovanligt.</li>
+    </ul>
+  </div></details>
+
+  <details class="block"><summary>4. Övriga biverkningar</summary><div class="body">
+    <ul style="margin:0.2rem 0 0;padding-left:1.2rem;color:var(--muted);font-size:0.9rem;">
+      <li><b>Viktuppgång:</b> råd om kost och fysisk aktivitet; sedvanlig obesitasbehandling.</li>
+      <li><b>Tremor:</b> ofta dosberoende, kan avta; låg dos betablockerare, t.ex. propranolol 10–20 mg/dag.</li>
+      <li><b>Kognitiva/emotionella biverkningar:</b> överväg annan orsak (t.ex. depression); ev. dossänkning.</li>
+      <li><b>Håravfall:</b> prova att sänka dosen.</li>
+      <li><b>GI (illamående, diarré):</b> ta tabletten direkt efter maten; byte till litiumkarbonat vid bestående diarré.</li>
+      <li><b>Akne, psoriasis:</b> kan förvärras/utlösas — sedvanlig behandling, hudremiss efter svårighetsgrad.</li>
+    </ul>
+  </div></details>
+
+  <p class="legend">Källor: <a href="svf-bipolar-sjukdom-skane-2022.pdf" style="color:var(--accent);"><b>Standardiserad vårdprocess bipolär sjukdom, Psykiatri Skåne (2022-05-30)</b> (PDF)</a>, bilaga 2 Litiumbehandling · <a href="https://vardgivare.skane.se/vardriktlinjer/lakemedel/skanelistan-med-bakgrundsmaterial/psykiatri/bipolar-sjukdom/" style="color:var(--accent);">Skånelistan — Bipolär sjukdom (Region Skåne, 2026-01-02)</a> · <a href="https://lakemedelsboken.se/terapiomraden/psykiatri/bipolar-sjukdom/behandling/stamningsstabiliserande-lakemedel/" style="color:var(--accent);">Läkemedelsboken — Stämningsstabiliserande läkemedel (2025)</a> · Läkartidningen, ABC om bipolär sjukdom (2019) · <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9780408/" style="color:var(--accent);">Kovacs et al., Int J Bipolar Disord 2022 (hyperkalcemi-algoritm)</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC13481389/" style="color:var(--accent);">Alidousti Shahraki et al., Langenbecks Arch Surg 2026 (systematisk översikt, förekomst av litiumassocierad HPT)</a> · Läkartidningen 2011;108:1764 (litiumassocierad HPT) · Bendz, Läkartidningen 2004;101:1902 · <a href="https://vardgivare.skane.se/contentassets/5f7f92bdefea465ca50891c43b5cbc28/tidig_uppt_initial_utredn_njursjd_sept2016.pdf" style="color:var(--accent);">Tidig upptäckt av kronisk njursjukdom (Södra sjukvårdsregionen)</a>. Region Skånes regionala riktlinje för återfallsförebyggande behandling vid bipolär sjukdom (2017) gällde t.o.m. 2020-03-31.</p>
 
   <p class="sub-label" style="font-size:0.95rem;margin-top:1rem;"><b>Intoxikation</b></p>
   <p style="margin:0.2rem 0 0;font-size:0.9rem;color:var(--muted);">Se <a href="toxidrom.html#litium" style="color:var(--accent);text-decoration:none;">Litiumintoxikation under Toxidrom →</a> (nivåer, symtom, hemodialys).</p>
