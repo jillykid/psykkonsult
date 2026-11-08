@@ -7,6 +7,19 @@
 <meta name="description" content="Om psykkonsult.se — vem som står bakom sidan.">
 <link rel="stylesheet" href="style.css?v=20261108">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
+<style>
+  .fb-form { display:flex; flex-direction:column; gap:0.7rem; margin-top:0.6rem; padding:1rem; border:1px solid var(--border); border-radius:var(--radius); background:var(--surface); }
+  .fb-form label { font-size:0.88rem; font-weight:600; color:var(--text); display:flex; flex-direction:column; gap:0.3rem; }
+  .fb-form .opt { font-weight:400; color:var(--muted); }
+  .fb-form input, .fb-form textarea { font:inherit; font-size:0.95rem; padding:0.55rem 0.7rem; border:1px solid var(--border); border-radius:8px; background:#fff; color:var(--text); width:100%; box-sizing:border-box; }
+  .fb-form textarea { min-height:7rem; resize:vertical; }
+  .fb-form input:focus, .fb-form textarea:focus { outline:2px solid var(--accent-soft); border-color:var(--accent); }
+  .fb-form .btn { align-self:flex-start; cursor:pointer; font:inherit; }
+  .fb-hp { position:absolute; left:-5000px; }
+  .fb-status { font-size:0.9rem; margin:0; }
+  .fb-status.ok { color:var(--accent-strong); }
+  .fb-status.err { color:var(--danger); }
+</style>
 </head>
 <body>
 <header class="site-header">
@@ -48,6 +61,36 @@
   <p>Det är en sammanställning av det jag själv har uppmärksammat behov av under jourtjänstgöring under min ST i vuxenpsykiatri, och reflekterar de situationer och tillstånd jag har stött på både i vanligt avdelningsarbete och på akutmottagningen.</p>
   <p>Jag hoppas att materialet kan vara till nytta för andra, exempelvis ST-läkare i psykiatri, underläkare eller randande läkare från andra specialiteter.</p>
   <p>Webbplatsen kommer att uppdateras i takt med nya riktlinjer och vetenskaplig utveckling.</p>
+
+  <h2 class="section-title" id="synpunkter">Synpunkter</h2>
+  <p>Har du hittat ett fel, saknar något eller har förslag på innehåll? Lämna gärna en kommentar.</p>
+  <form class="fb-form" id="fb-form" action="https://formspree.io/f/mwlljgbd" method="POST">
+    <label><span>Synpunkt</span><textarea name="synpunkt" required></textarea></label>
+    <label><span>Sida eller avsnitt <span class="opt">(valfritt)</span></span><input type="text" name="sida" placeholder="t.ex. Internmedicin – Nefrologi"></label>
+    <label><span>E-post <span class="opt">(valfritt — om du vill ha svar)</span></span><input type="email" name="email"></label>
+    <input type="hidden" name="_subject" value="Synpunkt från psykkonsult.se">
+    <input class="fb-hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <p class="fb-status" style="color:var(--muted);font-size:0.85rem;">Skriv inga patientuppgifter.</p>
+    <button class="btn" type="submit">Skicka</button>
+    <p class="fb-status" id="fb-status" role="status"></p>
+  </form>
+  <script>
+    document.getElementById('fb-form').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const f = e.target, s = document.getElementById('fb-status'), b = f.querySelector('button');
+      b.disabled = true; s.className = 'fb-status'; s.textContent = 'Skickar…';
+      try {
+        const r = await fetch(f.action, { method: 'POST', body: new FormData(f), headers: { Accept: 'application/json' } });
+        if (!r.ok) {
+          const d = await r.json().catch(() => ({}));
+          throw new Error(d.errors ? d.errors.map(x => x.message).join(' ') : '');
+        }
+        f.reset(); s.className = 'fb-status ok'; s.textContent = 'Tack för din synpunkt!';
+      } catch (err) {
+        s.className = 'fb-status err'; s.textContent = 'Något gick fel — försök igen senare.' + (err.message ? ' (' + err.message + ')' : '');
+      } finally { b.disabled = false; }
+    });
+  </script>
 
   <h2 class="section-title">Ansvarsfriskrivning</h2>
   <p>Materialet är ett kunskaps- och beslutsstöd för vårdpersonal och ersätter inte individuell medicinsk bedömning. Doser, kriterier och rutiner ska kontrolleras mot FASS, gällande lagtext och lokala riktlinjer innan de tillämpas.</p>
