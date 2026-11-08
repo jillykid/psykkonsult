@@ -44,6 +44,7 @@
     <a class="card" href="#antikoag"><h3>Antikoagulantia</h3><p>Tromboprofylax, DVT/LE, Waran.</p></a>
     <a class="card" href="#hepenc"><h3>Hepatisk encefalopati</h3><p>New Haven, laktulos.</p></a>
     <a class="card" href="#anemi"><h3>Anemi</h3><p>Utredning per MCV, järn/B12/folat.</p></a>
+    <a class="card" href="#nefrologi"><h3>Nefrologi</h3><p>eGFR, CKD-stadier, dialys, psykofarmaka.</p></a>
   </div>
 
   <!-- HYPONATREMI -->
@@ -343,6 +344,93 @@
     <li><b>Folatbrist:</b> folsyra <b>5 mg po/dag</b>. <b>OBS:</b> kontrollera/korrigera B12 först eller samtidigt — folat ensamt vid B12-brist kan maskera anemin och förvärra neurologisk skada.</li>
   </ul>
   <p class="legend">Källa: Akut Internmedicin (SUS), Internetmedicin. Verifiera mot lokal rutin.</p>
+
+  <!-- NEFROLOGI -->
+  <h2 class="section-title" id="nefrologi">Nefrologi — njurfunktion &amp; njursvikt</h2>
+  <p style="font-size:0.85rem;color:var(--muted);margin:0.2rem 0 0;">Akut njurskada på psykiatrisk avdelning: t.ex. dehydrering, litiumintoxikation, rabdomyolys (immobilisering, katatoni, MNS), NSAID.</p>
+
+  <p class="sub-label" style="font-size:0.95rem;margin-top:0.8rem;"><b>Definitioner</b></p>
+  <ul style="margin:0.2rem 0 0;padding-left:1.2rem;color:var(--muted);font-size:0.9rem;">
+    <li><b>CKD:</b> GFR &lt; 60 och/eller tecken på njurskada (t.ex. albuminuri) i <b>&gt; 3 månader</b>.</li>
+    <li><b>AKI:</b> kreatininstegring ≥ 26 µmol/L på 48 h, ≥ 1,5 × utgångsvärdet på 7 dagar, eller diures &lt; 0,5 ml/kg/h i 6 h.</li>
+    <li><b>eGFR (kreatinin)</b> överskattar njurfunktionen vid låg muskelmassa (äldre, sängliggande, ätstörning). <b>Cystatin C</b> påverkas inte av muskelmassa; <b>eGFR-medel</b> väger samman båda.</li>
+    <li><b>Relativt eGFR</b> (ml/min/1,73 m²) för stadieindelning; <b>absolut eGFR</b> (ml/min) för läkemedelsdosering. FASS anger ofta <b>kreatininclearance</b> (Cockcroft–Gault) — absolut eGFR kan användas i stället.</li>
+    <li><b>U-albumin/kreatinin:</b> &lt; 3 g/mol normalt; 3–29 måttligt; ≥ 30 kraftigt förhöjt.</li>
+  </ul>
+
+  <p class="sub-label" style="font-size:0.95rem;margin-top:0.8rem;"><b>Stadieindelning</b></p>
+  <div class="table-wrap">
+    <table class="compact">
+      <thead><tr><th>Stadium</th><th>eGFR (ml/min/1,73 m²)</th><th>Njurfunktion</th></tr></thead>
+      <tbody>
+        <tr><td>G1</td><td>≥ 90</td><td>Normal (med tecken på njurskada)</td></tr>
+        <tr><td>G2</td><td>60–89</td><td>Lätt nedsatt</td></tr>
+        <tr><td>G3a</td><td>45–59</td><td>Lätt–måttligt nedsatt</td></tr>
+        <tr><td>G3b</td><td>30–44</td><td>Måttligt nedsatt</td></tr>
+        <tr><td>G4</td><td>15–29</td><td>Kraftigt nedsatt</td></tr>
+        <tr><td>G5</td><td>&lt; 15</td><td>Njursvikt</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="sub-label" style="font-size:0.95rem;margin-top:0.8rem;"><b>Komplikationer</b> (från G3–G4)</p>
+  <ul style="margin:0.2rem 0 0;padding-left:1.2rem;color:var(--muted);font-size:0.9rem;">
+    <li><b>Hypertoni, övervätskning</b>, kardiovaskulär sjukdom.</li>
+    <li><b>Hyperkalemi</b> (behandla vid K ≥ 5,5) och <b>metabol acidos</b> (natriumbikarbonat).</li>
+    <li><b>Renal anemi</b> (eGFR &lt; 30) — se <a href="#anemi" style="color:var(--accent);text-decoration:none;">Anemi</a>. <b>CKD-MBD:</b> fosfat ↑, D-vitamin ↓, sekundär HPT.</li>
+    <li><b>Uremi</b> (G5): trötthet, illamående, klåda, kognitiv påverkan, <b>uremisk encefalopati</b>, perikardit — kan misstolkas som depression eller delirium.</li>
+  </ul>
+
+  <p class="sub-label" style="font-size:0.95rem;margin-top:0.8rem;"><b>Behandling &amp; remiss</b></p>
+  <ul style="margin:0.2rem 0 0;padding-left:1.2rem;color:var(--muted);font-size:0.9rem;">
+    <li>BT &lt; 130/80 vid albuminuri (annars &lt; 140/90), <b>ACE-hämmare/ARB + SGLT2-hämmare</b>, statin, rökstopp.</li>
+    <li>Undvik <b>NSAID</b>. Metformin max 500 mg × 2 vid eGFR 30–45, sätts ut vid &lt; 30. Dosjustera njurutsöndrade läkemedel.</li>
+    <li><b>Sjukdagsregler</b> (kräkning, diarré, feber): pausa metformin, ACE-hämmare/ARB, diuretika, SGLT2-hämmare, NSAID och <b>litium</b>.</li>
+    <li><b>Remiss njurmedicin:</b> eGFR &lt; 30, GFR-fall &gt; 25 %/år, U-albumin/kreatinin &gt; 70 g/mol, svårbehandlat BT, misstänkt systemsjukdom.</li>
+  </ul>
+
+  <p class="sub-label" style="font-size:0.95rem;margin-top:0.8rem;"><b>När är det dags för dialys?</b></p>
+  <ul style="margin:0.2rem 0 0;padding-left:1.2rem;color:var(--muted);font-size:0.9rem;">
+    <li><b>Uremiförberedelse</b> (HD, PD, transplantation eller konservativ vård) inom njurmedicin från eGFR ~15–20.</li>
+    <li><b>Planerad start</b> styrs av symtom, oftast vid eGFR ~5–10.</li>
+    <li><b>Akut:</b> refraktär hyperkalemi, svår acidos, lungödem, uremisk perikardit/encefalopati, intoxikation (t.ex. <b>litium</b>, metanol, etylenglykol).</li>
+  </ul>
+  <div class="note danger" style="margin-top:0.5rem;"><b>Litiumintoxikation — hemodialys</b> enligt <a href="https://pubmed.ncbi.nlm.nih.gov/25583292/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">EXTRIP</a>: vid S-Li &gt; 4,0 med nedsatt njurfunktion, eller sänkt medvetandegrad, kramper, livshotande arytmi oavsett nivå. Överväg vid S-Li &gt; 5,0 eller uttalad konfusion. Kontakta Giftinformationscentralen.</div>
+
+  <p class="sub-label" style="font-size:0.95rem;margin-top:1rem;"><b>Njurutsöndrade psykofarmaka</b> — särskild försiktighet</p>
+  <p style="margin:0.2rem 0 0;font-size:0.9rem;color:var(--muted);">Gränser i <b>absolut eGFR (ml/min)</b>. Kontrollera alltid FASS / Janusmed njurfunktion.</p>
+  <div class="table-wrap">
+    <table class="compact">
+      <thead><tr><th>Läkemedel</th><th>Vid nedsatt njurfunktion</th></tr></thead>
+      <tbody>
+        <tr><td colspan="2" style="background:var(--surface);font-weight:600;">Antipsykotika</td></tr>
+        <tr><td>Risperidon</td><td>Halverad start- och titreringsdos.</td></tr>
+        <tr><td>Paliperidon</td><td>Po: eGFR 50–80 max 6 mg; 10–50 max 3 mg. Depå: rekommenderas inte vid eGFR &lt; 50.</td></tr>
+        <tr><td>Amisulprid</td><td>eGFR 30–60 → halverad dos; 10–30 → en tredjedel.</td></tr>
+        <tr><td>Klozapin</td><td>Kontraindicerat vid svår njursjukdom.</td></tr>
+        <tr><td colspan="2" style="background:var(--surface);font-weight:600;">Antidepressiva</td></tr>
+        <tr><td>Venlafaxin</td><td>eGFR &lt; 30 eller dialys → halverad dos.</td></tr>
+        <tr><td>Duloxetin</td><td>Rekommenderas inte vid eGFR &lt; 30.</td></tr>
+        <tr><td>Mirtazapin</td><td>Lägre dos vid måttlig–svår njursvikt.</td></tr>
+        <tr><td colspan="2" style="background:var(--surface);font-weight:600;">Stämningsstabiliserande</td></tr>
+        <tr><td>Litium</td><td>Lägre dos, tätare S-litium. Svår njursvikt: undviks i regel (kontraindikation i FASS), ges i undantagsfall även vid dialys, alltid i samråd med njurmedicin. Se <a href="specialist-psykofarmaka.html#litium" style="color:var(--accent);text-decoration:none;">Litium</a>.</td></tr>
+        <tr><td colspan="2" style="background:var(--surface);font-weight:600;">Anxiolytika &amp; antiepileptika</td></tr>
+        <tr><td>Pregabalin</td><td>eGFR 30–60 → 75–300 mg/d; 15–30 → 25–150; &lt; 15 → 25–75.</td></tr>
+        <tr><td>Gabapentin</td><td>eGFR 50–79 → 600–1800 mg/d; 30–49 → 300–900; 15–29 → 150–600; &lt; 15 → 150–300.</td></tr>
+        <tr><td>Topiramat</td><td>eGFR &lt; 70 → halverad dos.</td></tr>
+        <tr><td colspan="2" style="background:var(--surface);font-weight:600;">Demensläkemedel</td></tr>
+        <tr><td>Memantin</td><td>eGFR 30–49 → 10 mg/d (ev. 20 mg); 5–29 → 10 mg/d.</td></tr>
+        <tr><td>Galantamin</td><td>Kontraindicerat vid eGFR &lt; 9.</td></tr>
+        <tr><td colspan="2" style="background:var(--surface);font-weight:600;">Beroendeläkemedel</td></tr>
+        <tr><td>Akamprosat</td><td>Kontraindicerat vid S-kreatinin &gt; 120 µmol/L.</td></tr>
+        <tr><td>Vareniklin</td><td>eGFR &lt; 30 → max 1 mg × 1.</td></tr>
+        <tr><td>Baklofen</td><td>Ackumuleras (encefalopati, sedering). Undvik vid svår njursvikt.</td></tr>
+        <tr><td colspan="2" style="background:var(--surface);font-weight:600;">ADHD-läkemedel</td></tr>
+        <tr><td>Lisdexamfetamin</td><td>eGFR 15–30 → max 50 mg/d.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="legend">Huvudsakligen levermetaboliserade: t.ex. sertralin, escitalopram, olanzapin, kvetiapin, aripiprazol, haloperidol, oxazepam. Källor: Södra sjukvårdsregionen — Kronisk njursjukdom (2022); Region Örebro län — Kronisk njursvikt; FASS; EXTRIP. Verifiera mot lokal rutin.</p>
 
   <!-- ÖVRIGT -->
   <h2 class="section-title">Övriga tillstånd</h2>
