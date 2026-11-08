@@ -405,3 +405,9 @@ table.hand td:first-child { font-weight: 400; }
 .thumb.up { stroke:#2e7d5b; }
 .thumb.down { stroke:#b3261e; }
 .thumb.flip { transform:scaleX(-1); }
+
+/* Under uppbyggnad */
+.wip-badge { display: inline-flex; align-items: center; gap: 0.6rem; margin: 0 0 1.4rem; padding: 0.55rem 0.9rem; background: #fff6cc; border: 2px dashed #d4a800; border-radius: 10px; color: #5c4a00; text-decoration: none; font-size: 0.92rem; line-height: 1.35; box-shadow: 0 1px 0 rgba(0,0,0,0.04); }
+.wip-badge svg { width: 26px; height: 26px; flex: none; }
+.wip-badge:hover { background: #ffefa3; border-color: #b38f00; }
+.wip-note { background: #fff6cc; border-left: 4px solid #d4a800; padding: 0.6rem 0.9rem; border-radius: 6px; color: #5c4a00; }
